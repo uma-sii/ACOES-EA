@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application version="7" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/application_7.xsd">
+  <display-name>ACOES_EP</display-name>
+  <module>
+    <ejb>ACOES_EJB.jar</ejb>
+  </module>
+  <module>
+    <web>
+      <web-uri>ACOES.war</web-uri>
+      <context-root>/ACOES</context-root>
+    </web>
+  </module>
+</application>
