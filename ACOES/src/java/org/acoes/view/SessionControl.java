@@ -12,7 +12,6 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import org.acoes.business.PaymentsFacade;
 import org.acoes.business.SponsorshipsFacade;
 import org.acoes.business.UsersFacade;
