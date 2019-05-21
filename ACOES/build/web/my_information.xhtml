@@ -11,11 +11,7 @@
         ACOES - My information
     </ui:define>
 
-    <ui:define name="content">
-        <f:metadata>
-            <f:event type="preRenderView" listener="#{sessionControl.redirectIfNeeded()}" />
-        </f:metadata>
-        
+    <ui:define name="content">        
         <c:choose>
             <c:when test="#{sessionControl.loggedIn()}">
                 <h3>My information</h3>
@@ -63,6 +59,7 @@
                 </div>
             </c:when>
             <c:otherwise>
+                Acceso no autorizado. Inicia sesión <a href="login.xhtml">aquí</a>.
             </c:otherwise>
         </c:choose>
         

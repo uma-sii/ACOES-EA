@@ -7,8 +7,8 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Administrator extends RegisteredUser {
-    private String workplace;
-    private String adminGroup;
+    private String workplace = "";
+    private String adminGroup = "";
 
     public Administrator(){super();}
     
