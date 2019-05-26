@@ -6,7 +6,9 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     
-
+    <ui:param name="must_be_logged_in" value="true"></ui:param>
+    <ui:param name="admin_only" value="true"></ui:param>
+    
     <ui:define name="title">
         Dashboard
     </ui:define>
@@ -58,6 +60,7 @@
                </style>
             <p></p>
             <p></p>
+            
             <h3>Dashboard</h3>
             <hr/>
             <c:set var="paymentsStats" value="#{sessionControl.paymentsServices.getStats()}" scope="request" />

@@ -30,6 +30,7 @@ and open the template in the editor.
         <h:outputStylesheet library="css" name="bootstrap.css"  />
         <h:outputStylesheet library="css" name="bootstrap-formhelpers-countries.flags.css"  />
     </h:head>
+    
     <script src="assets/js/bootstrap-formhelpers-countries.en_US.js"></script>
     <script src="assets/js/bootstrap-formhelpers-countries.js"></script>
     <body>
@@ -98,6 +99,17 @@ and open the template in the editor.
                 </div>
           </div>
         </nav>
-        <section style="padding: 10px; width:100%; height:100%" class="content"><ui:insert name="content"></ui:insert></section>
+        <section style="padding: 10px; width:100%; height:100%" class="content">
+            <c:choose>
+                <c:when test="#{(must_be_logged_in eq null) or
+                                (must_be_logged_in eq 'true' and sessionControl.loggedIn() and
+                                (admin_only eq null or (admin_only eq 'true' and sessionControl.usersServices.isAdmin(sessionControl.user))))}">
+                    <ui:insert name="content"></ui:insert>
+                </c:when>
+                <c:otherwise>
+                    Acceso no autorizado.
+                </c:otherwise>
+            </c:choose>
+        </section>
     </body>
 </html>
