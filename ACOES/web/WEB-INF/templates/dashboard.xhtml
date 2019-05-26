@@ -14,7 +14,17 @@ and open the template in the editor.
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-      
+    <style>
+        html{
+            height: 90%;
+            width: 100%;
+        }
+        body{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+        
     <h:head>
         <title><ui:insert name="title">ACOES - <h:outputText value="#{sessionControl.getUser()}"></h:outputText></ui:insert></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -24,10 +34,7 @@ and open the template in the editor.
     <script src="assets/js/bootstrap-formhelpers-countries.en_US.js"></script>
     <script src="assets/js/bootstrap-formhelpers-countries.js"></script>
     <body>
-        <!--<header id="main-header">
-            <img src="resources/images/acoes_logo.png" alt="ACOES"></img>
-        </header>-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <a class="navbar-brand" href="index.xhtml">ACOES</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -92,6 +99,6 @@ and open the template in the editor.
                 </div>
           </div>
         </nav>
-        <section style="padding: 10px" class="content"><ui:insert name="content"></ui:insert></section>
+        <section style="padding: 10px; width:100%; height:100%" class="content"><ui:insert name="content"></ui:insert></section>
     </body>
 </html>
