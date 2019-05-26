@@ -6,3 +6,4 @@
 /ACOES_EJB/nbproject/private/
 /build/
 /ACOES/web/WEB-INF/glassfish-resources.xml
+*.class
