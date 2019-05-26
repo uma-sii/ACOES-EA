@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 
 import java.util.*;
 import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.OneToMany;
 
 /**

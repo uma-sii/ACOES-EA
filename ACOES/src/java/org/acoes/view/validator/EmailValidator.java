@@ -7,6 +7,7 @@ import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 import org.acoes.business.UsersFacade;
+import org.acoes.view.SessionControl;
 
 /**
  *
@@ -17,9 +18,15 @@ public class EmailValidator implements Validator{
     @Inject
     private UsersFacade usersService;
     
+    @Inject
+    private SessionControl currentSession;
+    
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {	
 	String email = (String) value;
+        
+        if(email.equals(currentSession.getUser().getEmail()))
+            return;
         
         if(usersService.doesUserExist(email)){
             createFacesMessage(context, "Error: User already exists", "Error: User already exists");

@@ -2,3 +2,6 @@
 /ACOES_EJB/build/
 /ACOES_EJB/dist/
 /dist/
+/nbproject/private/
+/ACOES_EJB/nbproject/private/
+/build/

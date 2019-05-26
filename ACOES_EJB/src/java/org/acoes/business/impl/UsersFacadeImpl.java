@@ -4,6 +4,7 @@ import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import org.acoes.business.UsersFacade;
 import org.acoes.entity.Administrator;
 import org.acoes.entity.RegisteredUser;
@@ -44,7 +45,7 @@ public class UsersFacadeImpl implements UsersFacade {
 
     @Override
     public boolean isAdmin(RegisteredUser user) {
-        return em.find(RegisteredUser.class, user.getEmail()) instanceof Administrator;
+        return em.find(Administrator.class, user.getEmail()) != null;
     }
 
     @Override
@@ -62,7 +63,7 @@ public class UsersFacadeImpl implements UsersFacade {
 
     @Override
     public void refreshUser(RegisteredUser user) {
-        
+        em.merge(user);
     }
 
 }
