@@ -28,6 +28,7 @@ public class Register_Controller {
     
     private String email;
     private String password;
+    private String repeatPassword;
     private String dni;
     
     private String address;
@@ -50,6 +51,14 @@ public class Register_Controller {
     }
 
     public String register(){
+        if(!password.equals(repeatPassword)){
+            FacesContext ctx = FacesContext.getCurrentInstance();
+            FacesMessage message = new FacesMessage();
+            message.setSeverity(FacesMessage.SEVERITY_ERROR);
+            message.setSummary("Passwords are not the same");
+            ctx.addMessage("signupForm:Password", message);
+            return "registration.xhtml";
+        }
         RegisteredUser usr = new RegisteredUser(email,password);
         try{
             ctrl.getUsersServices().createUser(usr);
@@ -71,16 +80,24 @@ public class Register_Controller {
         this.email = email;
     }
 
+    public String getEmail() {
+        return email;
+    }
+    
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
     public String getPassword() {
         return password;
+    }
+    
+    public void setRepeatPassword(String repeatPassword) {
+        this.repeatPassword = password;
+    }
+    
+    public String getRepeatPassword(){
+        return repeatPassword;
     }
 
     public String getDni() {
@@ -154,6 +171,4 @@ public class Register_Controller {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-   
-    
 }
