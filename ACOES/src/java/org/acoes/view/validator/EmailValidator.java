@@ -24,6 +24,7 @@ public class EmailValidator implements Validator{
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {	
 	String email = (String) value;
+        String emailRegex = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         
         if(email.equals(currentSession.getUser().getEmail()))
             return;
@@ -36,7 +37,7 @@ public class EmailValidator implements Validator{
             createFacesMessage(context, "Error: Email is not valid", "Email cannot be empty.");
         }
         
-	if(!email.contains("@") || email.startsWith("@") || email.charAt(email.length()-1) == '@') {
+	if(!email.matches(emailRegex)) {
             createFacesMessage(context, "Error: Email is not valid", "Error: Email is not valid.");
         }
     }
