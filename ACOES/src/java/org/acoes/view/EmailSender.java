@@ -27,7 +27,15 @@ public class EmailSender {
     private static final String ACOES_EMAIL = "acoessiiuma@gmail.com";
     private static final String ACOES_EMAIL_PASSWORD = "randompassword";
     
+    public void sendTo(String to, String subject, String body){
+        sendEmail(to, subject, body);
+    }
+    
     public void sendToACOES(String subject, String body){
+        sendEmail(ACOES_EMAIL, subject, body);
+    }
+    
+    private void sendEmail(String to_email, String subject, String body){
         Properties prop = new Properties();
         prop.put("mail.smtp.host", SMTP_HOST_NAME);
         prop.put("mail.smtp.starttls.enable", "true");
@@ -41,7 +49,7 @@ public class EmailSender {
         MimeMessage message = new MimeMessage(mailSession);
         try {
             Address from = new InternetAddress(ACOES_EMAIL);
-            Address to = from;
+            Address to = new InternetAddress(to_email);
             message.setFrom(from);
             message.addRecipient(Message.RecipientType.TO, to);
             message.setSubject(subject);
