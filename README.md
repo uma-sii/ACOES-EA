@@ -40,7 +40,7 @@
 - [ ] Use dummy data from the database.
 
 ### Sponsorship information:
-- [ ] I dunno why but it is empty. Maybe we used the wrong url.
+- [ ] I do not know why, but it is empty. Maybe we used the wrong url.
 
 ### Apply for sponsorship:
 - [ ] Improve style.
