@@ -5,7 +5,8 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
     <ui:define name="title">
         ACOES - Work with us
@@ -14,29 +15,22 @@
     <ui:define name="content">
         <!-- Dummy data -->
         <h2>Help ACOES make a better world</h2>
-        <p>Do you want to colaborate with ACOES? Fill in this form and we will contact you</p>
-        <table>
-        <form id="volunteer_application">
-            <fieldset>
-                    <tr><label>First name:</label></tr>
-                        <tr>
-                            <input type ="text" name="nombre"/>
-                        </tr>
-                   <tr><label>Last name:</label></tr>
-                        <tr>
-                    <input type ="text" name="apellidos"/>
-                        </tr>
-                   <tr><label>Email: </label></tr>
-                        <td>
-                    <input type ="text" name="email"/>
-                        </td>                   
-                   <tr>
-                       <input type="submit" value="Enviar"/>
-                   </tr>
-            </fieldset>
-        </form>
-        </table>
-        <textarea form="volunteer_application" name="message" rows="5" cols="90">Enter your message here...</textarea> 
+        <p>Do you want to colaborate with ACOES? Fill in this form and we will contact you.</p>
+        <h:form id="volunteer_application">
+            <h:panelGrid columns="1" cellpadding="5">
+                <h:panelGrid columns="2">
+                    <h:inputText class="form-control" pt:placeholder="Your First Name"></h:inputText>
+                    <h:inputText class="form-control" pt:placeholder="Your Last Name"></h:inputText>
+                </h:panelGrid>
+                <h:inputText class="form-control" pt:placeholder="Your Email"></h:inputText>
+                
+                <h:inputTextarea class="form-control" rows="5" pt:placeholder="Enter your message here..."></h:inputTextarea>
+                
+                <h:commandButton type="submit" class="btn btn-primary" value="Send" action="#{donation.donate()}">
+                </h:commandButton>
+            </h:panelGrid>
+        </h:form>
+        
         <p>You can also help us economically  <a href="donate.xhtml">donating </a> or sponsoring a child. You must  <a href="registration.xhtml">register</a> before being a sponsor.</p>
     </ui:define>
 </ui:composition>
