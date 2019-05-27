@@ -21,7 +21,7 @@
             table{
                  font-family: arial, sans-serif;
                  border-collapse: collapse;
-                 width: 81%;
+                 width: 100%;
              }
              * {
                  box-sizing: border-box;
@@ -56,54 +56,43 @@
              form.example button:hover {
                  background: #0b7dda;
              }
+             
+             btn{
+                 width: 200px;
+             }
         </style>       
 
         <h3>Pending approvals for sponsorship</h3>
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>E-mail</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <td>Cris Cris</td>
-                    <td>ex@gmail.com</td>
-                    <td><a href="index.xhtml">Allow</a></td>
-                    <td><a href="index.xhtml">Decline</a></td>
-                </tr>
-                <tr>
-                    <td>Miguel Miguel</td>
-                    <td>ex2@gmail.com</td>
-                    <td><a href="index.xhtml">Allow</a></td>
-                    <td><a href="index.xhtml">Decline</a></td>
-                </tr>
-                <tr>
-                    <td>Manuel Manuel</td>
-                    <td>ex3@gmail.com</td>
-                    <td><a href="index.xhtml">Allow</a></td>
-                    <td><a href="index.xhtml">Decline</a></td>
-                </tr>
-                <tr>
-                    <td>Luis Luis</td>
-                    <td>ex3@gmail.com</td>
-                    <td><a href="index.xhtml">Allow</a></td>
-                    <td><a href="index.xhtml">Decline</a></td>
-                </tr>
-                <tr>
-                    <td>Diego Diego</td>
-                    <td>ex4@gmail.com</td>
-                    <td><a href="index.xhtml">Allow</a></td>
-                    <td><a href="index.xhtml">Decline</a></td>
-                </tr>
-                <tr>
-                    <td>Alex Alex</td>
-                    <td>example@gmail.com</td>
-                    <td><a href="index.xhtml">Allow</a></td>
-                    <td><a href="index.xhtml">Decline</a></td>
-                </tr>
-            </table>
-            <p></p>
-            <span id="val"></span>
+        <hr/>
+        
+        <c:choose>
+            <c:when test="#{sessionControl.adminsServices.notifications.isEmpty()}">
+                There is no notifications.
+            </c:when>
+            <c:otherwise>        
+                <h:dataTable id="table" value="#{sessionControl.adminsServices.notifications}" var="entry">
+                    <h:column>
+                        <f:facet name="header">ID</f:facet>
+                        <h:outputText value="#{entry.id}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Applicant</f:facet>
+                        <h:outputText value="#{entry.applicant.email}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Timestamp</f:facet>
+                        <h:outputText value="#{entry.dateOfRequest}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Allow/Decline</f:facet>
+                        <h:commandButton class="btn btn-success" value="Accept" action="#{sessionControl.adminsServices.acceptRequest(entry.id)}"/>
+                        <h:commandButton class="btn btn-danger" value="Decline" action="#{sessionControl.adminsServices.declineRequest(entry.id)}"/>
+                    </h:column>
+                </h:dataTable>
+            </c:otherwise>
+        </c:choose>
     </ui:define>
 </ui:composition>

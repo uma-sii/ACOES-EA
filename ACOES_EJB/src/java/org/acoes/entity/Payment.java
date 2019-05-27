@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -26,7 +26,8 @@ public class Payment implements Serializable {
     private Date paymentTimestamp;
     private String paymentMethod;
     private String concept;
-    @OneToOne
+
+    @ManyToOne
     private RegisteredUser benefactor;
 
     public Payment(){}

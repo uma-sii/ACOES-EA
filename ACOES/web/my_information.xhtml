@@ -27,6 +27,7 @@
             
             <label>Password:</label>
             <h:inputSecret id="password" class="form-control" value="#{sessionControl.user.password}">
+                <f:validator validatorId="PasswordValidator" />
             </h:inputSecret>
             <h:message for="password" style="color:red"></h:message>
             

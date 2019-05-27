@@ -7,4 +7,9 @@
 	<validator-id>EmailValidator</validator-id>
 	<validator-class>org.acoes.view.validator.EmailValidator</validator-class>
     </validator>         
+    
+    <validator>
+	<validator-id>PasswordValidator</validator-id>
+	<validator-class>org.acoes.view.validator.PasswordValidator</validator-class>
+    </validator>         
 </faces-config>

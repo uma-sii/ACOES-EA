@@ -63,7 +63,7 @@
             
             <h3>Dashboard</h3>
             <hr/>
-            <c:set var="paymentsStats" value="#{sessionControl.paymentsServices.getStats()}" scope="request" />
+            <c:set var="notifications" value="#{sessionControl.paymentsServices.getStats()}" scope="request" />
             
             <f:metadata>
             <f:event type="preRenderView" listener="#{sessionControl.redirectIfNeeded()}" />
@@ -76,12 +76,21 @@
                 <c:otherwise>
                     <h:dataTable id="table" value="#{paymentsStats.getPayments()}" var="entry">
                     <h:column>
-                        <f:facet name="header">Source</f:facet>
+                        <f:facet name="header">Concept</f:facet>
                         <h:outputText value="#{entry.concept}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">Income ($/Quota)</f:facet>
                         <h:outputText value="#{entry.amount}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Payment Method</f:facet>
+                        <h:outputText value="#{entry.paymentMethod}"/>
+                    </h:column>
+                        
+                    <h:column>
+                        <f:facet name="header">Timestamp</f:facet>
+                        <h:outputText value="#{entry.timestamp}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">Benefactor</f:facet>

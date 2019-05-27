@@ -12,6 +12,7 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import org.acoes.business.AdminsFacade;
 import org.acoes.business.PaymentsFacade;
 import org.acoes.business.SponsorshipsFacade;
 import org.acoes.business.UsersFacade;
@@ -35,6 +36,9 @@ public class SessionControl implements Serializable {
     
     @EJB
     private PaymentsFacade paymentsServices;
+    
+    @EJB
+    private AdminsFacade adminsServices;
     
     public SessionControl(){ }
     
@@ -64,6 +68,10 @@ public class SessionControl implements Serializable {
     
     public PaymentsFacade getPaymentsServices(){
         return paymentsServices;
+    }
+    
+    public AdminsFacade getAdminsServices(){
+        return adminsServices;
     }
     
     public void refreshUser(){
