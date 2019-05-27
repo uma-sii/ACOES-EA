@@ -38,6 +38,6 @@ public class AdminsFacadeImpl implements AdminsFacade {
     private void removeRequest(Long id){
         Notification n = (Notification) em.find(Notification.class, id);
         if(n != null)
-            em.refresh(n);
+            em.remove(n);
     }
 }

@@ -88,8 +88,10 @@
 
                     <h:column>
                         <f:facet name="header">Allow/Decline</f:facet>
-                        <h:commandButton class="btn btn-success" value="Accept" action="#{sessionControl.adminsServices.acceptRequest(entry.id)}"/>
-                        <h:commandButton class="btn btn-danger" value="Decline" action="#{sessionControl.adminsServices.declineRequest(entry.id)}"/>
+                        <h:form>
+                            <h:commandButton class="btn btn-success" value="Accept" action="#{sessionControl.adminsServices.acceptRequest(entry.id)}"/>
+                            <h:commandButton class="btn btn-danger" value="Decline" action="#{sessionControl.adminsServices.declineRequest(entry.id)}"/>
+                        </h:form>
                     </h:column>
                 </h:dataTable>
             </c:otherwise>
