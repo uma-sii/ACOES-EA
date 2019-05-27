@@ -51,4 +51,4 @@
 - [ ] Change h1.
 - [ ] Filter function.
 
-In addition to all that, we gotta write up the docs.
+In addition to all that, we have to write up the docs.
