@@ -12,13 +12,13 @@
 
 ### Collaborate
 - [ ] Form validation (required fields).
-- [ ] Send email to acoes account (we will have to create one).
+- [x] Send email to acoes account (we will have to create one).
 
 ### Donate
 - [ ] Add donations to the database.
 
 ### Contact us (Dependency: 4)
-- [ ] Write down the email we have created in the item 4.
+- [x] Write down the email we have created in the item 4.
 
 ### Log In
 - [ ] Error messages.
