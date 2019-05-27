@@ -19,14 +19,14 @@
         <h:form id="volunteer_application">
             <h:panelGrid columns="1" cellpadding="5">
                 <h:panelGrid columns="2">
-                    <h:inputText class="form-control" pt:placeholder="Your First Name"></h:inputText>
-                    <h:inputText class="form-control" pt:placeholder="Your Last Name"></h:inputText>
+                    <h:inputText class="form-control" pt:placeholder="Your First Name" value="#{collaborateController.firstName}"></h:inputText>
+                    <h:inputText class="form-control" pt:placeholder="Your Last Name" value="#{collaborateController.lastName}"></h:inputText>
                 </h:panelGrid>
-                <h:inputText class="form-control" pt:placeholder="Your Email"></h:inputText>
+                <h:inputText class="form-control" pt:placeholder="Your Email" value="#{collaborateController.email}"></h:inputText>
                 
-                <h:inputTextarea class="form-control" rows="5" pt:placeholder="Enter your message here..."></h:inputTextarea>
+                <h:inputTextarea class="form-control" rows="5" pt:placeholder="Enter your message here..." value="#{collaborateController.message}"></h:inputTextarea>
                 
-                <h:commandButton type="submit" class="btn btn-primary" value="Send" action="#{donation.donate()}">
+                <h:commandButton type="submit" class="btn btn-primary" value="Send" action="#{collaborateController.Send()}">
                 </h:commandButton>
             </h:panelGrid>
         </h:form>
