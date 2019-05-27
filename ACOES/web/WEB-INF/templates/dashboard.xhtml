@@ -107,17 +107,36 @@ and open the template in the editor.
         
         <div style="height:9%"></div> <!-- Sticky navigation bar "space" -->
         
-        <section style="padding: 10px; width:100%; height:100%" class="content">
-            <c:choose>
-                <c:when test="#{(must_be_logged_in eq null) or
-                                (must_be_logged_in eq 'true' and sessionControl.loggedIn() and
-                                (admin_only eq null or (admin_only eq 'true' and sessionControl.usersServices.isAdmin(sessionControl.user))))}">
-                    <ui:insert name="content"></ui:insert>
-                </c:when>
-                <c:otherwise>
-                    Acceso no autorizado.
-                </c:otherwise>
-            </c:choose>
-        </section>
+        <c:choose>
+            <c:when test="#{ignore_padding eq null}">
+                <section style="padding: 10px; width:100%; height:100%" class="content">
+                    <c:choose>
+                        <c:when test="#{(must_be_logged_in eq null) or
+                                        (must_be_logged_in eq 'true' and sessionControl.loggedIn() and
+                                        (admin_only eq null or (admin_only eq 'true' and sessionControl.usersServices.isAdmin(sessionControl.user))))}">
+                            <ui:insert name="content"></ui:insert>
+                        </c:when>
+                        <c:otherwise>
+                            Unauthorized access.
+                        </c:otherwise>
+                    </c:choose>
+                </section>
+            </c:when>
+            
+            <c:otherwise>
+                <section style="width:100%; height:100%" class="content">
+                    <c:choose>
+                        <c:when test="#{(must_be_logged_in eq null) or
+                                        (must_be_logged_in eq 'true' and sessionControl.loggedIn() and
+                                        (admin_only eq null or (admin_only eq 'true' and sessionControl.usersServices.isAdmin(sessionControl.user))))}">
+                            <ui:insert name="content"></ui:insert>
+                        </c:when>
+                        <c:otherwise>
+                            Unauthorized access.
+                        </c:otherwise>
+                    </c:choose>
+                </section>
+            </c:otherwise>
+        </c:choose>
     </body>
 </html>
