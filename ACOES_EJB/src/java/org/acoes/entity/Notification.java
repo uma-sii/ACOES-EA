@@ -27,10 +27,12 @@ public class Notification implements Serializable {
     private Long id;
 
     @OneToOne
-    private RegisteredUser applicant;
+    private Sponsor applicant;
     
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateOfRequest;
+    
+    private SubscriptionType subscriptionType;
     
     public Long getId() {
         return id;
@@ -40,11 +42,11 @@ public class Notification implements Serializable {
         this.id = id;
     }
     
-    public RegisteredUser getApplicant(){
+    public Sponsor getApplicant(){
         return applicant;
     }
     
-    public void setApplicant(RegisteredUser applicant){
+    public void setApplicant(Sponsor applicant){
         this.applicant = applicant;
     }
     
@@ -54,6 +56,14 @@ public class Notification implements Serializable {
     
     public void setDateOfRequest(Date dateOfRequest){
         this.dateOfRequest = dateOfRequest;
+    }
+    
+    public SubscriptionType getSubscriptionType(){
+        return subscriptionType;
+    }
+    
+    public void setSubscriptionType(SubscriptionType type){
+        subscriptionType = type;
     }
 
     @Override

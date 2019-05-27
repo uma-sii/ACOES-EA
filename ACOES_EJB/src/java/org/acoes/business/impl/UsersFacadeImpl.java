@@ -8,7 +8,6 @@ import javax.persistence.Query;
 import org.acoes.business.UsersFacade;
 import org.acoes.entity.Administrator;
 import org.acoes.entity.RegisteredUser;
-import org.acoes.entity.Sponsor;
 import org.acoes.model.exceptions.UserAlreadyExistsException;
 
 /**
@@ -44,16 +43,6 @@ public class UsersFacadeImpl implements UsersFacade {
     }
 
     @Override
-    public boolean isAdmin(RegisteredUser user) {
-        return em.find(Administrator.class, user.getEmail()) != null;
-    }
-
-    @Override
-    public boolean isSponsor(RegisteredUser user) {
-        return em.find(RegisteredUser.class, user.getEmail()) instanceof Sponsor;
-    }
-
-    @Override
     public RegisteredUser match(String email, String password) {
         RegisteredUser result = findUser(email);
         if(result != null && result.getPassword().equals(password))
@@ -64,6 +53,16 @@ public class UsersFacadeImpl implements UsersFacade {
     @Override
     public void refreshUser(RegisteredUser user) {
         em.merge(user);
+    }
+
+    @Override
+    public boolean isAdmin(RegisteredUser user) {
+        return em.find(Administrator.class, user.getEmail()) != null;
+    }
+
+    @Override
+    public boolean isSponsor(RegisteredUser user) {
+        return isAdmin(user) == false;
     }
 
 }

@@ -1,17 +1,25 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package org.acoes.entity;
 
-import javax.persistence.Entity;
-
-import java.util.*;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 /**
+ *
  * @author Manuel
  */
 @Entity
+@DiscriminatorValue("SPONSOR")
 public class Sponsor extends RegisteredUser {
+    private boolean requestApproved;
+    
     private String dni;
     
     private String address;
@@ -31,11 +39,15 @@ public class Sponsor extends RegisteredUser {
     
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<Payment> payments;
-
-    public Sponsor(){super();}
     
-    public Sponsor(String username, String password) {
-        super(username, password);
+    private SubscriptionType subscriptionType;
+
+    public boolean getRequestApproved(){
+        return requestApproved;
+    }
+    
+    public void setRequestApproved(boolean approved){
+        this.requestApproved = approved;
     }
     
     public String getDNI() {
@@ -125,7 +137,15 @@ public class Sponsor extends RegisteredUser {
     public void setPayments(List<Payment> payments) {
         this.payments = payments;
     }
-
+    
+    public SubscriptionType getSubscriptionType(){
+        return subscriptionType;
+    }
+    
+    public void setSubscriptionType(SubscriptionType type){
+        subscriptionType = type;
+    }
+    
     @Override
     public String toString() {
         return "Sponsor(" + email + ")";

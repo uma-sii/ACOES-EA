@@ -23,10 +23,10 @@
             <h:inputText id="email" class="form-control" value="#{sessionControl.user.email}">
                 <f:validator validatorId="EmailValidator" />
             </h:inputText>
-            <h:message for="email" style="color:red"></h:message>
+            <h:message for="email" style="color:red"></h:message><br/>
             
             <label>Password:</label>
-            <h:inputSecret id="password" class="form-control" value="#{sessionControl.user.password}">
+            <h:inputSecret id="password" redisplay="true" class="form-control" value="#{sessionControl.user.password}">
                 <f:validator validatorId="PasswordValidator" />
             </h:inputSecret>
             <h:message for="password" style="color:red"></h:message>

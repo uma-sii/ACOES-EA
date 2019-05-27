@@ -10,6 +10,5 @@ import org.acoes.entity.Notification;
 @Local
 public interface AdminsFacade {
     public List<Notification> getNotifications();
-    public void acceptRequest(Long id);
-    public void declineRequest(Long id);
+    public void setRequestStatus(Notification notif, boolean approved);
 }

@@ -67,7 +67,7 @@
         
         <c:choose>
             <c:when test="#{sessionControl.adminsServices.notifications.isEmpty()}">
-                There is no notifications.
+                There are no notifications.
             </c:when>
             <c:otherwise>        
                 <h:dataTable id="table" value="#{sessionControl.adminsServices.notifications}" var="entry">
@@ -89,8 +89,8 @@
                     <h:column>
                         <f:facet name="header">Allow/Decline</f:facet>
                         <h:form>
-                            <h:commandButton class="btn btn-success" value="Accept" action="#{sessionControl.adminsServices.acceptRequest(entry.id)}"/>
-                            <h:commandButton class="btn btn-danger" value="Decline" action="#{sessionControl.adminsServices.declineRequest(entry.id)}"/>
+                            <h:commandButton class="btn btn-success" value="Accept" action="#{sessionControl.adminsServices.setRequestStatus(entry, true)}"/>
+                            <h:commandButton class="btn btn-danger" value="Decline" action="#{sessionControl.adminsServices.setRequestStatus(entry, false)}"/>
                         </h:form>
                     </h:column>
                 </h:dataTable>

@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import org.acoes.business.AdminsFacade;
 import org.acoes.entity.Notification;
-import org.acoes.entity.RegisteredUser;
 import org.acoes.entity.Sponsor;
 
 /**
@@ -28,19 +27,11 @@ public class AdminsFacadeImpl implements AdminsFacade {
     }
 
     @Override
-    public void acceptRequest(Long id) {
-        Notification n = (Notification) em.find(Notification.class, id);
-        RegisteredUser applicant = n.getApplicant();
-        if(n != null)
-            em.remove(n);
-        //Sponsor sponsor = new Sponsor(applicant.getEmail(), applicant.getPassword());
-        //em.persist(sponsor);
-    }
-
-    @Override
-    public void declineRequest(Long id) {
-        Notification n = (Notification) em.find(Notification.class, id);
-        if(n != null)
-            em.remove(n);
+    public void setRequestStatus(Notification n, boolean approved) {
+        Sponsor s = n.getApplicant();
+        s = em.merge(s);
+        s.setRequestApproved(approved);
+        n = em.merge(n);
+        em.remove(n);
     }
 }

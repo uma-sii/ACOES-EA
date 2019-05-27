@@ -14,64 +14,55 @@
     </ui:define>
 
     <ui:define name="content">
-        <html>
-            
-               <meta name="viewport" content="width=device-width, initial-scale=1" /> 
-               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-               <style>
-                   table{
-                        font-family: arial, sans-serif;
-                        border-collapse: collapse;
-                        width: 100%;
-                    }
-                    * {
-                        box-sizing: border-box;
-                    }
-                    td, th {
-                        border: 1px solid #dddddd;
-                        text-align: left;
-                        padding: 8px;
-                    }
-                    tr:nth-child(even) {
-                        background-color: #dddddd;
-                    }
-                    form.example input[type=text] {
-                        padding: 7px;
-                        font-size: 17px;
-                        border: 1px solid grey;
-                        float: left;
-                        width: 50%;
-                        background: #f1f1f1;
-                    }
-                    form.example button {  
-                        float: left;
-                        width: 8%;
-                        padding: 7px;
-                        background: #2196F3;
-                        color: white;
-                        font-size: 17px;
-                        border: 1px solid grey;
-                        border-left: none;
-                        cursor: pointer;
-                    }
-                    form.example button:hover {
-                        background: #0b7dda;
-                    }
-               </style>
-            <p></p>
-            <p></p>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+            <style>
+                table{
+                     font-family: arial, sans-serif;
+                     border-collapse: collapse;
+                     width: 100%;
+                 }
+                 * {
+                     box-sizing: border-box;
+                 }
+                 td, th {
+                     border: 1px solid #dddddd;
+                     text-align: left;
+                     padding: 8px;
+                 }
+                 tr:nth-child(even) {
+                     background-color: #dddddd;
+                 }
+                 form.example input[type=text] {
+                     padding: 7px;
+                     font-size: 17px;
+                     border: 1px solid grey;
+                     float: left;
+                     width: 50%;
+                     background: #f1f1f1;
+                 }
+                 form.example button {  
+                     float: left;
+                     width: 8%;
+                     padding: 7px;
+                     background: #2196F3;
+                     color: white;
+                     font-size: 17px;
+                     border: 1px solid grey;
+                     border-left: none;
+                     cursor: pointer;
+                 }
+                 form.example button:hover {
+                     background: #0b7dda;
+                 }
+            </style>
             
             <h3>Dashboard</h3>
             <hr/>
-            <c:set var="notifications" value="#{sessionControl.paymentsServices.getStats()}" scope="request" />
-            
-            <f:metadata>
-            <f:event type="preRenderView" listener="#{sessionControl.redirectIfNeeded()}" />
-            </f:metadata>
+            <c:set var="paymentsStats" value="#{sessionControl.paymentsServices.getStats()}" scope="request" />
             
             <c:choose>
                 <c:when test="#{paymentsStats.getPayments().isEmpty()}">
-                    There is no payments.
+                    There are no payments.
                 </c:when>
                 <c:otherwise>
                     <h:dataTable id="table" value="#{paymentsStats.getPayments()}" var="entry">
@@ -103,12 +94,5 @@
 
                 </c:otherwise>
             </c:choose>
-            
-            <!--<h:form class="example">
-                <h:inputText class="search"></h:inputText>
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </h:form>-->
-            
-        </html>
     </ui:define>
 </ui:composition>

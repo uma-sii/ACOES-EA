@@ -1,24 +1,28 @@
 package org.acoes.entity;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 
 /**
  @author Manuel
  */
 @Entity
-@Inheritance
+@DiscriminatorColumn(name="TYPE")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class RegisteredUser implements Serializable {
-
     private static final long serialVersionUID = 1L;
     
     @Id
     protected String email;
-    protected String password; // todo: <- hash of salt + password
-    //protected String salt;
+    protected String password; 
     
     public RegisteredUser(){}
     
