@@ -1,5 +1,6 @@
 package org.acoes.business;
 
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Local;
 import org.acoes.entity.SponsoredChild;
@@ -13,6 +14,6 @@ import org.acoes.entity.Sponsor;
 @Local
 public interface SponsorshipsFacade {
     public List<Sponsor> getSponsors(boolean onlyApproved);
-    public List<SponsoredChild> getSponsoredChildren(RegisteredUser user);
+    public Collection<SponsoredChild> getSponsoredChildren(RegisteredUser user);
     public void applyForSponsorship(RegisteredUser user);
 }

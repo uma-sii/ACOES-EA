@@ -5,10 +5,12 @@
  */
 package org.acoes.entity;
 
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 /**
@@ -34,10 +36,10 @@ public class Sponsor extends RegisteredUser {
     private String firstName;
     private String lastName;
     
-    @OneToMany(cascade = CascadeType.PERSIST)
-    private List<SponsoredChild> sponsoredChildren;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="sponsor", fetch=FetchType.EAGER)
+    private Collection<SponsoredChild> sponsoredChildren;
     
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Payment> payments;
     
     private SubscriptionType subscriptionType;
@@ -122,7 +124,7 @@ public class Sponsor extends RegisteredUser {
         this.zipcode = zipcode;
     }
     
-    public List<SponsoredChild> getSponsoredChildren() {
+    public Collection<SponsoredChild> getSponsoredChildren() {
         return sponsoredChildren;
     }
 

@@ -24,6 +24,8 @@ public class SponsoredChild implements Serializable {
     private String address;
     private String city;
     private String country;
+    
+    private Sponsor sponsor;
 
     public SponsoredChild(){}
     
@@ -90,6 +92,14 @@ public class SponsoredChild implements Serializable {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+    
+    public Sponsor getSponsor(){
+        return sponsor;
+    }
+    
+    public void setSponsor(Sponsor sponsor){
+        this.sponsor = sponsor;
     }
     
     @Override

@@ -1,5 +1,6 @@
 package org.acoes.business.impl;
 
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -22,8 +23,10 @@ public class SponsorshipsFacadeImpl implements SponsorshipsFacade {
     private EntityManager em;
     
     @Override
-    public List<SponsoredChild> getSponsoredChildren(RegisteredUser user) {
-        Query query = em.createQuery("SELECT * FROM SponsoredChild s w");
+    public Collection<SponsoredChild> getSponsoredChildren(RegisteredUser user) {
+        //Query query = em.createQuery("SELECT * FROM SPONSOREDCHILD INNER JOIN "
+        //        + "(SELECT SPONSOREDCHILDREN_ID \"CHILD_ID\" FROM REGISTEREDUSER_SPONSOREDCHILD "
+        //        + "WHERE sponsor_email = '" + user.getEmail() + "') CHILDREN ON ID = CHILDREN.CHILD_ID");
         Sponsor sponsor = (Sponsor)em.find(Sponsor.class, user.getEmail());
         return sponsor.getSponsoredChildren();
     }
