@@ -3,12 +3,12 @@
 ## To-Do List
 
 ### About us:
-- [ ] Improve style.
-- [ ] Replace blurry images.
+- [x] Improve style.
+- [x] Replace blurry images.
 
 ### Projects
-- [ ] Improve style.
-- [ ] Replace blurry images.
+- [x] Improve style.
+- [x] Replace blurry images.
 
 ### Collaborate
 - [ ] Form validation (required fields).
@@ -43,7 +43,7 @@
 - [ ] I do not know why, but it is empty. Maybe we used the wrong url.
 
 ### Apply for sponsorship:
-- [ ] Improve style.
+- [x] Improve style.
 - [ ] Create Notification.
 
 ### Payments:
