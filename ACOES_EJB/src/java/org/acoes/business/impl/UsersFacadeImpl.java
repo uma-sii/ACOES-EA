@@ -4,10 +4,10 @@ import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import org.acoes.business.UsersFacade;
 import org.acoes.entity.Administrator;
 import org.acoes.entity.RegisteredUser;
+import org.acoes.entity.Sponsor;
 import org.acoes.model.exceptions.UserAlreadyExistsException;
 
 /**
@@ -21,7 +21,7 @@ public class UsersFacadeImpl implements UsersFacade {
     private EntityManager em;
             
     @Override
-    public void createUser(RegisteredUser user) {
+    public void createUser(Sponsor user) {
         if(doesUserExist(user))
             throw new UserAlreadyExistsException(user.getEmail());
         em.persist(user);

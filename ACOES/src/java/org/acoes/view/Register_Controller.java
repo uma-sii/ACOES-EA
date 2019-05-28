@@ -13,6 +13,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import org.acoes.entity.Gender;
+import org.acoes.entity.Sponsor;
 import org.acoes.model.exceptions.UserAlreadyExistsException;
 
 
@@ -59,7 +60,18 @@ public class Register_Controller {
             ctx.addMessage("signupForm:Password", message);
             return "registration.xhtml";
         }
-        RegisteredUser usr = new RegisteredUser(email,password);
+        Sponsor usr = new Sponsor(email, password);
+        usr.setAddress(address);
+        usr.setCity(city);
+        usr.setCountry(country);
+        usr.setZipcode(zipcode);
+        
+        usr.setDNI(dni);
+        usr.setFirstName(firstName);
+        usr.setLastName(lastName);
+        
+        usr.setGender(gender);
+        usr.setPhoneNumber(phoneNumber);
         try{
             ctrl.getUsersServices().createUser(usr);
             ctrl.setUser(usr);

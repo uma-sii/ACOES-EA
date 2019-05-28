@@ -2,6 +2,7 @@ package org.acoes.business;
 
 import javax.ejb.Local;
 import org.acoes.entity.RegisteredUser;
+import org.acoes.entity.Sponsor;
 
 /**
   Business tier operations related to users.
@@ -9,7 +10,7 @@ import org.acoes.entity.RegisteredUser;
  */
 @Local
 public interface UsersFacade {
-    public void             createUser(RegisteredUser user);
+    public void             createUser(Sponsor user);
     public boolean          doesUserExist(RegisteredUser user);
     public boolean          doesUserExist(String email);
     public RegisteredUser   findUser(String email);
