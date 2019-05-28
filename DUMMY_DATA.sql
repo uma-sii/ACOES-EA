@@ -39,3 +39,17 @@ INSERT INTO PAYMENT VALUES (0, 45, 'Donation', 'PayPal', '2019-01-07 11:07:00', 
 INSERT INTO PAYMENT VALUES (1, 4, 'Donation', 'Visa', '2019-03-12 18:07:00', 'ricardo@gmail.com');
 INSERT INTO PAYMENT VALUES (2, 87, 'Donation', 'Visa', '2019-04-08 09:47:00', 'manuel@gmail.com');
 INSERT INTO PAYMENT VALUES (3, 100, 'Subscription', 'Mastercard', '2019-03-01 12:00:00', 'miguel@gmail.com');
+
+-- SPONSOREDCHILD
+INSERT INTO SPONSOREDCHILD VALUES (0, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Juan Carlos', 0, 'Rodriguez', 'manuel@gmail.com');
+INSERT INTO SPONSOREDCHILD VALUES (1, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Manuel',      0, 'Perez', 'cris@gmail.com');
+INSERT INTO SPONSOREDCHILD VALUES (2, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Francisco',   0, 'Lopez', 'luis@gmail.com');
+INSERT INTO SPONSOREDCHILD VALUES (3, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Diego',       0, 'Ramirez', 'alex@gmail.com');
+INSERT INTO SPONSOREDCHILD VALUES (4, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Jorge',       0, 'Cardas', 'diego@gmail.com');
+INSERT INTO SPONSOREDCHILD VALUES (5, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Alvaro',      0, 'Arroyo', 'miguel@gmail.com');
+INSERT INTO SPONSOREDCHILD VALUES (6, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Victoria',    1, 'Mejia', 'manuel@gmail.com');
+INSERT INTO SPONSOREDCHILD VALUES (7, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Ana',         1, 'Reviriego', 'cris@gmail.com');
+INSERT INTO SPONSOREDCHILD VALUES (8, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Rosa',        1, 'Gonzalez', 'luis@gmail.com');
+INSERT INTO SPONSOREDCHILD VALUES (9, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Mercedes',    1, 'Rodriguez', 'alex@gmail.com');
+INSERT INTO SPONSOREDCHILD VALUES (10, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Laura',      1, 'Perez', 'diego@gmail.com');
+INSERT INTO SPONSOREDCHILD VALUES (11, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Cristina',   1, 'Merino', 'miguel@gmail.com');
