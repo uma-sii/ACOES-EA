@@ -5,6 +5,7 @@
  */
 package org.acoes.entity;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -36,8 +37,8 @@ public class Sponsor extends RegisteredUser {
     private String firstName;
     private String lastName;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="sponsor", fetch=FetchType.EAGER)
-    private Collection<SponsoredChild> sponsoredChildren;
+    @OneToMany(mappedBy="sponsor", fetch=FetchType.LAZY)
+    private List<SponsoredChild> sponsoredChildren = new ArrayList<>();
     
     @OneToMany(cascade = CascadeType.ALL)
     private List<Payment> payments;

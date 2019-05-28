@@ -14,6 +14,6 @@ import org.acoes.entity.Sponsor;
 @Local
 public interface SponsorshipsFacade {
     public List<Sponsor> getSponsors(boolean onlyApproved);
-    public Collection<SponsoredChild> getSponsoredChildren(RegisteredUser user);
+    public Collection<SponsoredChild> getSponsoredChildren(RegisteredUser user, int page);
     public void applyForSponsorship(RegisteredUser user);
 }

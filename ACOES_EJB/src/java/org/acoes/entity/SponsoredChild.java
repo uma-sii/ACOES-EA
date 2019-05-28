@@ -4,6 +4,8 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * @author Manuel
@@ -25,6 +27,8 @@ public class SponsoredChild implements Serializable {
     private String city;
     private String country;
     
+    @ManyToOne
+    @JoinColumn(name="SPONSOR")
     private Sponsor sponsor;
 
     public SponsoredChild(){}

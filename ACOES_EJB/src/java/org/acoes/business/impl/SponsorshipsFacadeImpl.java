@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import org.acoes.business.SponsorshipsFacade;
 import org.acoes.entity.Payment;
 import org.acoes.entity.SponsoredChild;
@@ -23,11 +24,14 @@ public class SponsorshipsFacadeImpl implements SponsorshipsFacade {
     private EntityManager em;
     
     @Override
-    public Collection<SponsoredChild> getSponsoredChildren(RegisteredUser user) {
-        //Query query = em.createQuery("SELECT * FROM SPONSOREDCHILD INNER JOIN "
-        //        + "(SELECT SPONSOREDCHILDREN_ID \"CHILD_ID\" FROM REGISTEREDUSER_SPONSOREDCHILD "
-        //        + "WHERE sponsor_email = '" + user.getEmail() + "') CHILDREN ON ID = CHILDREN.CHILD_ID");
-        Sponsor sponsor = (Sponsor)em.find(Sponsor.class, user.getEmail());
+    public Collection<SponsoredChild> getSponsoredChildren(RegisteredUser user, int page) {
+        /*TypedQuery<SponsoredChild> q = em.createQuery("SELECT c FROM SponsoredChild c JOIN Sponsor s ON s.email = c.sponsor.email WHERE s.email = :itemId", SponsoredChild.class);
+        q.setParameter("itemId", user.getEmail());
+        q.setFirstResult(page*9);
+        q.setMaxResults(9);
+        System.out.println("Query getSponsoredChildren: " + q.getResultList().size());
+        return q.getResultList();*/
+        Sponsor sponsor = em.find(Sponsor.class, user.getEmail());
         return sponsor.getSponsoredChildren();
     }
 
