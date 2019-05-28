@@ -5,6 +5,11 @@
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"></link>
 
     <ui:param name="must_be_logged_in" value="true"></ui:param>
     
@@ -14,110 +19,76 @@
 
     <ui:define name="content">
         
-<div class="checkout-panel">
-  <div class="panel-body">
-    <h2 class="title">Apply for new sponsorship</h2>
- 
-    <div class="progress-bar">
-      <div class="step active"></div>
-      <div class="step active"></div>
-      <div class="step"></div>
-      <div class="step"></div>
-    </div>
- 
-    <div class="payment-method">
-           <h3>Payment method</h3>
-      <label for="card" class="method card">
-        <div class="card-logos">
-          <img src="resources/img/visa_logo.png"/>
-          <img src="resources/img/mastercard_logo.png"/>
-        </div>
- 
-        <div class="radio-input">
-          <input id="card" type="radio" name="payment"/>
-          Pay with credit card
-        </div>
-      </label>
- 
-      <label for="paypal" class="method paypal">
-        <img src="resources/img/paypal_logo.png"/>
-        <div class="radio-input">
-          <input id="paypal" type="radio" name="payment"/>
-          Pay with PayPal
-        </div>
-      </label>
-    </div>
- 
-    <div class="sponsor-amount">
-        <h3>Monthly amount</h3>
-        <label for="fee-one">
-            <div class="radio-amount-input">
-            <input id="fee-one" type="radio" name="payment-amount"/>
-            1€ fee
-            </div>
-        </label>
-        <label for="fee-two">
-            <div class="radio-amount-input">
-            <input id="fee-two" type="radio" name="payment-amount"/>
-            4,99€ 
-            </div>
-        </label>
-        <label for="fee-three">
-            <div class="radio-amount-input">
-            <input id="fee-three" type="radio" name="payment-amount"/>
-            9,99€ 
-            </div>
-        </label>    
-        <label for="fee-four">
-            <div class="radio-amount-input">
-            <input id="fee-four" type="radio" name="payment-amount"/>
-            29,99€ 
-            </div>
-        </label>
-        <label for="fee-five">
-            <div class="radio-amount-input">
-            <input id="fee-five" type="radio" name="payment-amount"/>
-            49,99€ 
-            </div>
-        </label>
-        <label for="fee-six">
-            <div class="radio-amount-input">
-            <input id="fee-six" type="radio" name="payment-amount"/>
-            99,99€ 
-            </div>
-        </label>
-    </div>
-    <div class="input-fields">
-           <h3>Payment info</h3>
-      <div class="column-1">
-        <label for="cardholder">Cardholder's Name</label>
-        <input type="text" id="cardholder" />
- 
-        <div class="small-inputs">
-          <div>
-            <label for="date">Valid thru</label>
-            <input type="text" id="date" placeholder="MM / YY" />
-          </div>
- 
-          <div>
-            <label for="verification">CVV / CVC *</label>
-            <input type="password" id="verification"/>
-          </div>
-        </div>
- 
-      </div>
-      <div class="column-2">
-        <label for="cardnumber">Card Number</label>
-        <input type="password" id="cardnumber"/>
- 
-        <span class="info">* CVV or CVC is the card security code, unique three digits number on the back of your card separate from its number.</span>
-      </div>
-    </div>
-  </div>
- 
-  <div class="panel-footer">
-      <button class="btn next-btn"><h6>Procceed</h6></button>
-  </div>
-</div>
+        <h2>Sponsorship application</h2>
+        <hr/>
+        <h:form class="card">
+            <div class="card-body p-5">
+
+                <ul class="nav bg-light nav-pills rounded nav-fill mb-3" role="tablist">
+                        <li class="nav-item">
+                                <a class="nav-link active" data-toggle="pill" href="#nav-tab-card">
+                                <i class="fa fa-credit-card"></i> Credit Card</a></li>
+                        <li class="nav-item">
+                                <a class="nav-link" data-toggle="pill" href="#nav-tab-paypal">
+                                <i class="fab fa-paypal"></i>  Paypal</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="nav-tab-card">
+                        <p class="alert alert-success">Please write your payment credentials</p>
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="username">Full name (on the card)</label>
+                                <input type="text" class="form-control" name="username" placeholder="" required=""></input>
+                            </div> 
+
+                            <div class="form-group">
+                                <label for="cardNumber">Card number</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="cardNumber" placeholder=""></input>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text text-muted">
+                                            <i class="fab fa-cc-visa"></i>   <i class="fab fa-cc-amex"></i>   
+                                            <i class="fab fa-cc-mastercard"></i> 
+                                        </span>
+                                    </div>
+                                </div>
+                            </div> 
+
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label><span class="hidden-xs">Expiration</span> </label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" placeholder="MM" name=""></input>
+                                            <input type="number" class="form-control" placeholder="YY" name=""></input>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
+                                        <input type="number" class="form-control" required=""></input>
+                                    </div> 
+                                </div>
+                            </div> 
+                            <h:commandButton type="submit" class="btn btn-primary" value="Confirm" action="#{donation.donate()}">
+                            </h:commandButton> 
+                        </form>
+                    </div> 
+                    <div class="tab-pane fade" id="nav-tab-paypal">
+                        <p>Paypal is easiest way to pay online</p>
+                        <p>
+                            <button type="button" class="btn btn-primary"> <i class="fab fa-paypal"></i> Log in my Paypal </button>
+                        </p>
+                        <p><strong>Note:</strong> You will be redirected to Paypal's domain. </p>
+                    </div>
+                </div> 
+            </div> 
+        </h:form> 
+        <p></p>
+        <h:messages style="list-style: none; color: red"></h:messages>
+        <h:outputText id="sponsorshipMessage" value="#{donation.message}"/>
+
     </ui:define>
 </ui:composition>
