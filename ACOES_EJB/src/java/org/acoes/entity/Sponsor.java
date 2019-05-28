@@ -45,6 +45,10 @@ public class Sponsor extends RegisteredUser {
     
     private SubscriptionType subscriptionType;
 
+    public Sponsor(){
+        super();
+    }
+    
     public Sponsor(String email, String password) {
         super(email, password);
     }
