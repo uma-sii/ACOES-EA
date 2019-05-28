@@ -23,6 +23,7 @@ public class SponsorshipsFacadeImpl implements SponsorshipsFacade {
     
     @Override
     public List<SponsoredChild> getSponsoredChildren(RegisteredUser user) {
+        Query query = em.createQuery("SELECT * FROM SponsoredChild s w");
         Sponsor sponsor = (Sponsor)em.find(Sponsor.class, user.getEmail());
         return sponsor.getSponsoredChildren();
     }
