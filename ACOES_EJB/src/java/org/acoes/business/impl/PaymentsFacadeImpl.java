@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import org.acoes.business.PaymentsFacade;
 import org.acoes.entity.Payment;
+import org.acoes.entity.Sponsor;
 
 /**
  *
@@ -31,5 +32,11 @@ public class PaymentsFacadeImpl implements PaymentsFacade {
     public Stats getStats() {
         return new Stats(getAllPayments());
     }
-    
+
+    @Override
+    public List<Payment> getUserPayments(Sponsor sponsor) {
+        Query query = em.createQuery("SELECT p FROM Payment p WHERE p.benefactor.email = '" + sponsor.getEmail() + "'");
+        List<Payment> payments = (List<Payment>)query.getResultList();
+        return payments;
+    }
 }
