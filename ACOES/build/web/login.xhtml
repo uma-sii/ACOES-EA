@@ -2,31 +2,61 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html                 xmlns="http://www.w3.org/1999/xhtml"
                       xmlns:h="http://xmlns.jcp.org/jsf/html"
-                      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+                      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"></link>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
     <h:head>
-        <title>ACOES - Login</title>
+        <title>ACOES - <c:choose>
+                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                Login
+                            </c:when>
+                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                Iniciar sesión
+                            </c:when>
+                        </c:choose>
+        </title>
         <h:outputStylesheet library="css" name="bootstrap.css"  />
     </h:head>
     <h:body style="background-color: #91c2f7">
         <div class="panel panel-default" style="margin: 40px 300px; background-color: white; padding: 20px">
             <div class="panel-header" style="text-align: center">
-                <h2>Sign in</h2>
+                <h2>
+                    <c:choose>
+                        <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                            Login
+                        </c:when>
+                        <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                            Iniciar sesión
+                        </c:when>
+                    </c:choose>
+                </h2>
                 <hr/>
             </div>
             <div class="panel-body">
                 <h:form style="padding: 20px;">
                     <h:panelGrid columns="1" cellpadding="5" style="width:100%;">
-                        <fieldset>
-                            <h:inputText   required="true" class="form-control" pt:placeholder="Email" value="#{login_Controller.email}" />
-                            <h:inputSecret required="true" class="form-control" pt:placeholder="Password" id="nonFeedback" value="#{login_Controller.password}" />
-                        </fieldset>
-                        <h:commandButton class="btn btn-primary" style="width: 100%" value="Log in" action="#{login_Controller.authenticate()}"/>
-                        <h:commandButton class="btn btn-primary" style="width: 100%" value="Create an account" action="registration.xhtml"/>    
+                        <c:choose>
+                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                <fieldset>
+                                    <h:inputText   required="true" class="form-control" pt:placeholder="Email" value="#{login_Controller.email}" />
+                                    <h:inputSecret required="true" class="form-control" pt:placeholder="Password" id="nonFeedback" value="#{login_Controller.password}" />
+                                </fieldset>
+                                <h:commandButton class="btn btn-primary" style="width: 100%" value="Log in" action="#{login_Controller.authenticate()}"/>
+                                <h:commandButton class="btn btn-primary" style="width: 100%" value="Create an account" action="registration.xhtml"/>    
+                            </c:when>
+                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                <fieldset>
+                                    <h:inputText   required="true" class="form-control" pt:placeholder="Email" value="#{login_Controller.email}" />
+                                    <h:inputSecret required="true" class="form-control" pt:placeholder="Contraseña" id="nonFeedback" value="#{login_Controller.password}" />
+                                </fieldset>
+                                <h:commandButton class="btn btn-primary" style="width: 100%" value="Iniciar sesión" action="#{login_Controller.authenticate()}"/>
+                                <h:commandButton class="btn btn-primary" style="width: 100%" value="Crear una cuenta" action="registration.xhtml"/>    
+                            </c:when>
+                        </c:choose>
                     </h:panelGrid>
                     <h:messages style="list-style-type: none; color:red"></h:messages>
                 </h:form>

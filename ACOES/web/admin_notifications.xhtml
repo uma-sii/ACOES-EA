@@ -10,7 +10,14 @@
     <ui:param name="admin_only" value="true"></ui:param>
     
     <ui:define name="title">
-        ACOES - Notifications
+        ACOES - <c:choose>
+                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                        Notifications
+                    </c:when>
+                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                        Notificaciones
+                    </c:when>
+                </c:choose>
     </ui:define>
 
     <ui:define name="content">
@@ -62,35 +69,88 @@
              }
         </style>       
 
-        <h3>Pending approvals for sponsorship</h3>
+        <h3>
+            <c:choose>
+                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                    Pending approvals for sponsorship
+                </c:when>
+                <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                    Solicitudes para ser patrocinador pendientes
+                </c:when>
+            </c:choose>
+        </h3>
         <hr/>
         
         <c:choose>
             <c:when test="#{sessionControl.adminsServices.notifications.isEmpty()}">
-                There are no notifications.
+                <c:choose>
+                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                        There are no notifications.
+                    </c:when>
+                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                        No tienes notificaciones.
+                    </c:when>
+                </c:choose>
             </c:when>
             <c:otherwise>        
                 <h:dataTable id="table" value="#{sessionControl.adminsServices.notifications}" var="entry">
                     <h:column>
-                        <f:facet name="header">ID</f:facet>
+                        <f:facet name="header">
+                            ID
+                        </f:facet>
                         <h:outputText value="#{entry.id}"/>
                     </h:column>
 
                     <h:column>
-                        <f:facet name="header">Applicant</f:facet>
+                        <f:facet name="header">
+                            <c:choose>
+                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                    Applicant
+                                </c:when>
+                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                    Solicitante
+                                </c:when>
+                            </c:choose>
+                        </f:facet>
                         <h:outputText value="#{entry.applicant.email}"/>
                     </h:column>
                     
                     <h:column>
-                        <f:facet name="header">Timestamp</f:facet>
+                        <f:facet name="header">
+                            <c:choose>
+                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                    Timestamp
+                                </c:when>
+                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                    Fecha de solicitud
+                                </c:when>
+                            </c:choose>
+                        </f:facet>
                         <h:outputText value="#{entry.dateOfRequest}"/>
                     </h:column>
 
                     <h:column>
-                        <f:facet name="header">Allow/Decline</f:facet>
+                        <f:facet name="header">
+                            <c:choose>
+                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                    Allow/Decline
+                                </c:when>
+                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                    Aceptar/Rechazar
+                                </c:when>
+                            </c:choose>
+                        </f:facet>
                         <h:form>
-                            <h:commandButton class="btn btn-success" value="Accept" action="#{sessionControl.adminsServices.setRequestStatus(entry, true)}"/>
-                            <h:commandButton class="btn btn-danger" value="Decline" action="#{sessionControl.adminsServices.setRequestStatus(entry, false)}"/>
+                            <c:choose>
+                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                    <h:commandButton class="btn btn-success" value="Accept" action="#{sessionControl.adminsServices.setRequestStatus(entry, true)}"/>
+                                    <h:commandButton class="btn btn-danger" value="Decline" action="#{sessionControl.adminsServices.setRequestStatus(entry, false)}"/>
+                                </c:when>
+                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                    <h:commandButton class="btn btn-success" value="Aceptar" action="#{sessionControl.adminsServices.setRequestStatus(entry, true)}"/>
+                                    <h:commandButton class="btn btn-danger" value="Rechazar" action="#{sessionControl.adminsServices.setRequestStatus(entry, false)}"/>
+                                </c:when>
+                            </c:choose>
                         </h:form>
                     </h:column>
                 </h:dataTable>

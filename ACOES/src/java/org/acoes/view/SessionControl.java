@@ -40,7 +40,11 @@ public class SessionControl implements Serializable {
     @EJB
     private AdminsFacade adminsServices;
     
-    public SessionControl(){ }
+    private Language lang;
+    
+    public SessionControl(){ 
+        lang = Language.SPANISH;
+    }
     
     public void setUser(RegisteredUser user){
         this.user = user;
@@ -72,6 +76,14 @@ public class SessionControl implements Serializable {
     
     public AdminsFacade getAdminsServices(){
         return adminsServices;
+    }
+    
+    public void setLang(Language language){
+        this.lang = language;
+    }
+    
+    public Language getLang(){
+        return lang;
     }
     
     public void refreshUser(){

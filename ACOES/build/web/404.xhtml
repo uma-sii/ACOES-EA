@@ -3,13 +3,30 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:define name="title">
-        ACOES - Page not found
+        ACOES - <c:choose>
+                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                        Page not found
+                    </c:when>
+                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                        Página no encontrada
+                    </c:when>
+                </c:choose>
     </ui:define>
 
     <ui:define name="content">
-        <h1>404 - Page not found</h1>
+        <h1>
+            404 - <c:choose>
+                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                        Page not found
+                    </c:when>
+                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                        Página no encontrada
+                    </c:when>
+                </c:choose>
+        </h1>
     </ui:define>
 </ui:composition>

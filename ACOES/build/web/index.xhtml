@@ -15,18 +15,56 @@
     <ui:define name="title">
         ACOES - Home
     </ui:define>
-    
+
     <ui:define name="content">
+        
         <div style="height:25%"/>
         <div id="home" style="height: 50%">
-            <h1 style="font-weight: 900; font-size: 50px; letter-spacing: -0.04em; color: rgb(58, 145, 255);" align="center">Do you want to make the world </h1>
-            <h1 style="font-weight: 900; font-size: 50px; letter-spacing: -0.04em; color: rgb(58, 145, 255);" align="center">a better place?</h1>
+            <h1 style="font-weight: 900; font-size: 50px; letter-spacing: -0.04em; color: rgb(58, 145, 255);" align="center">
+                <c:choose>
+                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                        Do you want to make the world
+                    </c:when>
+                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                        ¿Quiere hacer del mundo
+                    </c:when>
+                </c:choose>
+            </h1>
+            <h1 style="font-weight: 900; font-size: 50px; letter-spacing: -0.04em; color: rgb(58, 145, 255);" align="center">
+                <c:choose>
+                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                        a better place?
+                    </c:when>
+                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                        un lugar mejor?
+                    </c:when>
+                </c:choose>
+            </h1>
+            
             <br></br>
-            <h4 style="font-weight: 400; font-size: 25px; letter-spacing: -0.04em; color: #212529;" align="center">I do. I would like to</h4>
+            
+            <h4 style="font-weight: 400; font-size: 25px; letter-spacing: -0.04em; color: #212529;" align="center">
+                <c:choose>
+                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                        I do. I would like to
+                    </c:when>
+                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                        Sí. Me gustaría
+                    </c:when>
+                </c:choose>
+            </h4>
             <br></br>
             <h:panelGrid style="margin: 0 auto;" columns="2" cellpadding="5">
-                <h:button class="btn btn-primary" value="BECOME A SPONSOR" outcome="registration.xhtml"/>    
-                <h:button class="btn btn-secondary" value="MAKE A DONATION" outcome="donate.xhtml"/>
+                <c:choose>
+                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                        <h:button class="btn btn-primary" value="BECOME A SPONSOR" outcome="registration.xhtml"/>    
+                        <h:button class="btn btn-secondary" value="MAKE A DONATION" outcome="donate.xhtml"/>
+                    </c:when>
+                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                        <h:button class="btn btn-primary" value="SER PATROCINADOR" outcome="registration.xhtml"/>    
+                        <h:button class="btn btn-secondary" value="HACER DONACIÓN" outcome="donate.xhtml"/>
+                    </c:when>
+                </c:choose>
             </h:panelGrid>
         </div>
         <div style="height: 15%"></div>
@@ -116,20 +154,44 @@
         
         <div class="generalinfo">
             <div class="col70">
-                <h2>Learn about our latest stories</h2>
+                <h2>
+                    <c:choose>
+                        <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                            Learn about our latest stories
+                        </c:when>
+                        <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                            Conoce nuestras últimas historias
+                        </c:when>
+                    </c:choose>
+                </h2>
                 <div class="new">
                     <div class="col30">
                         <h:graphicImage value="resources/img/wapsi.jpg"></h:graphicImage>
                     </div>
                     <div class="col65">
-                        <h3>SOLIDARY ONLINE SHOPPING AND COLLABORATE WITH ACOES</h3>
-                        <p>
-                            WAPSI is a solidarity shopping platform over the internet. 
-                            A page where, if you sign up and put ACOES HONDURAS as your beneficiary NGO, 
-                            every time you make a purchase at any of the stores attached to Wapsi, 
-                            the store will give us a small commission as part of its corporate Social Responsibility policy. 
-                            and THE MOST IMPORTANT: without that YOU HAVE ANY EURO MORE THAN what your purchase costs you.
-                        </p>
+                        <c:choose>
+                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                <h3>SOLIDARY ONLINE SHOPPING AND COLLABORATE WITH ACOES</h3>
+                                <p>
+                                    WAPSI is a solidarity shopping platform over the internet. 
+                                    A page where, if you sign up and put ACOES HONDURAS as your beneficiary NGO, 
+                                    every time you make a purchase at any of the stores attached to Wapsi, 
+                                    the store will give us a small commission as part of its corporate Social Responsibility policy. 
+                                    and THE MOST IMPORTANT: without that YOU HAVE ANY EURO MORE THAN what your purchase costs you.
+                                </p>
+                            </c:when>
+                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                <h3>COMPRAS SOLIDARIAS ONLINE Y COLABORA CON ACOES</h3>
+                                <p>
+                                    WAPSI es una plataforma de compras solidarias por internet.
+                                    Una página donde, si te das de alta y pones ACOES HONDURAS como tu ONG beneficiaria,
+                                    cada vez que hagas una compra en alguna de las tiendas adheridas a Wapsi,
+                                    la tienda nos dará una pequeña comisión como parte de su política de Responsabilidad Social
+                                    corporativa y LO MÁS IMPORTANTE: sin que a ti TE CUESTE NI UN EURO MÁS de lo que te cuesta
+                                    tu compra.
+                                </p>
+                            </c:when>
+                        </c:choose>
                     </div>
                 </div>
                 <div class="new">
@@ -137,25 +199,49 @@
                         <h:graphicImage value="resources/img/RUTA-2019.jpg"></h:graphicImage>
                     </div>
                     <div class="col65">
-                        <h3>ELOÍSA's AND FATHER ÁLVARO's 2019 TOUR IN SPAIN</h3>
-                        <p>
-                            The missionaries Eloísa Muela and Father Álvaro Ramos are in Spain to make a two-month route 
-                            that will take you through different cities in Spain, to visit and thank the people who collaborated with ACOES Honduras. 
-                            They will talk and show videos of the projects that ACOES carries out in Honduras.
-                        </p>
+                        <c:choose>
+                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                <h3>ELOÍSA's AND FATHER ÁLVARO's 2019 TOUR IN SPAIN</h3>
+                                <p>
+                                    The missionaries Eloísa Muela and Father Álvaro Ramos are in Spain to make a two-month route 
+                                    that will take you through different cities in Spain, to visit and thank the people who collaborated with ACOES Honduras. 
+                                    They will talk and show videos of the projects that ACOES carries out in Honduras.
+                                </p>
+                            </c:when>
+                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                <h3>RUTA 2019 DE ELOÍSA Y DEL PADRE ÁLVARO POR ESPAÑA</h3>
+                                <p>
+                                    Los misioneros Eloísa Muela y el  Padre Álvaro Ramos se encuentran en España para realizar una ruta de dos meses
+                                    que le llevará por distintas ciudades de España, para visitar y agradecer a las personas que colaboraran con ACOES Honduras.
+                                    Hablarán y mostrarán vídeos de los proyectos que ACOES lleva a cabo en Honduras.
+                                </p>
+                            </c:when>
+                        </c:choose>
                     </div>
                 </div>
                 <div class="new">
                     <div class="col30">
                         <h:graphicImage value="resources/img/aniversario.jpg"></h:graphicImage>
                     </div>
-                    <div class="col65">
-                        <h3>FIRST PRIESTLY ANIVERSARY OF ÁLVARO RAMOS</h3>
-                        <p>
-                            Today Father Álvaro Ramos celebrates his First Priestly Anniversary. 
-                            The ACOES family is very grateful for the example it gives us and we pray that God 
-                            will give him strength in his mission to help those who need it.
-                        </p>
+                    <div class="col65">                     
+                        <c:choose>
+                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                <h3>FIRST PRIESTLY ANIVERSARY OF ÁLVARO RAMOS</h3>
+                                <p>
+                                    Today Father Álvaro Ramos celebrates his First Priestly Anniversary. 
+                                    The ACOES family is very grateful for the example it gives us and we pray that God 
+                                    will give him strength in his mission to help those who need it.
+                                </p>
+                            </c:when>
+                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                <h3>I ANIVERSARIO SACERDOTAL DE ÁLVARO RAMOS</h3>
+                                <p>
+                                    Hoy el Padre Álvaro Ramos celebra su Primer Aniversario Sacerdotal.
+                                    La familia  ACOES estamos muy agradecidos por el ejemplo que nos da y rezamos
+                                    para que Dios le dé fuerzas en su misión de ayudar a los que lo necesitan.
+                                </p>
+                            </c:when>
+                        </c:choose>
                     </div>
                 </div>
                 
@@ -163,8 +249,16 @@
             </div>
             <div class="col30">
                 <div class="followus">
-                    <span>Follow us in the social media</span>
-
+                    <span>
+                        <c:choose>
+                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                Follow us in the social media
+                            </c:when>
+                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                Síguenos en redes sociales
+                            </c:when>
+                        </c:choose>
+                    </span>
                 </div>
                 <a class="twitter-timeline" data-height="800" href="https://twitter.com/AcoesSii">AcoesSii Twitter</a> <script async="async" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
             </div> 

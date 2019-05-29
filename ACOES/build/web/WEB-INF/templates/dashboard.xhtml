@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
@@ -49,19 +44,52 @@ and open the template in the editor.
           <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="about_us.xhtml">About us</a>
+                    <a class="nav-link" href="about_us.xhtml">
+                        <c:choose>
+                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                About us
+                            </c:when>
+                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                Sobre nosotros
+                            </c:when>
+                        </c:choose>
+                    </a>
                 </li>
-                <!--<li class="nav-item">
-                    <a class="nav-link" href="projects.xhtml">Projects</a>
-                </li>-->
                 <li class="nav-item">
-                    <a class="nav-link" href="collaborate.xhtml">Collaborate</a>
+                    <a class="nav-link" href="collaborate.xhtml">
+                        <c:choose>
+                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                Collaborate
+                            </c:when>
+                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                Colabora
+                            </c:when>
+                        </c:choose>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="donate.xhtml">Donate</a>
+                    <a class="nav-link" href="donate.xhtml">
+                        <c:choose>
+                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                Donate
+                            </c:when>
+                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                Donación
+                            </c:when>
+                        </c:choose>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact_us.xhtml">Contact us</a>
+                    <a class="nav-link" href="contact_us.xhtml">
+                        <c:choose>
+                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                Contact us
+                            </c:when>
+                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                Contacta con nosotros
+                            </c:when>
+                        </c:choose>
+                    </a>
                 </li>
             </ul>
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
@@ -92,12 +120,39 @@ and open the template in the editor.
                             </div>                        
                         </c:when>
                         <c:otherwise>
-                           <button type="button" class="btn btn-primary">Sign in</button>
+                            <button type="button" class="btn btn-primary">
+                                <c:choose>
+                                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                        Sign in
+                                    </c:when>
+                                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                        Iniciar sesión
+                                    </c:when>
+                                </c:choose>
+                            </button>
                            <div class="btn-group toggle" role="group">
                              <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
                              <div class="dropdown-menu toggle" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: -120px; will-change: transform;">
-                               <a class="dropdown-item" href="login.xhtml">Login</a>
-                               <a class="dropdown-item" href="registration.xhtml">Sign up</a>
+                                 <a class="dropdown-item" href="login.xhtml">
+                                     <c:choose>
+                                        <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                            Login
+                                        </c:when>
+                                        <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                            Iniciar sesión
+                                        </c:when>
+                                    </c:choose>
+                                 </a>
+                                 <a class="dropdown-item" href="registration.xhtml">
+                                     <c:choose>
+                                        <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                            Sign up
+                                        </c:when>
+                                        <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                            Crear cuenta
+                                        </c:when>
+                                    </c:choose>
+                                 </a>
                              </div>
                            </div>                            
                         </c:otherwise>
@@ -118,7 +173,14 @@ and open the template in the editor.
                             <ui:insert name="content"></ui:insert>
                         </c:when>
                         <c:otherwise>
-                            Unauthorized access.
+                            <c:choose>
+                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                    Unauthorized access.
+                                </c:when>
+                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                    Acceso no autorizado.
+                                </c:when>
+                            </c:choose>
                         </c:otherwise>
                     </c:choose>
                 </section>
@@ -133,7 +195,14 @@ and open the template in the editor.
                             <ui:insert name="content"></ui:insert>
                         </c:when>
                         <c:otherwise>
-                            Unauthorized access.
+                            <c:choose>
+                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                    Unauthorized access.
+                                </c:when>
+                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                    Acceso no autorizado.
+                                </c:when>
+                            </c:choose>
                         </c:otherwise>
                     </c:choose>
                 </section>
