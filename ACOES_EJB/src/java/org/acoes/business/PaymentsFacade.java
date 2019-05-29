@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.ejb.Local;
 import org.acoes.entity.Payment;
 import org.acoes.entity.RegisteredUser;
+import org.acoes.entity.Sponsor;
 
 /**
  *
@@ -14,6 +15,8 @@ import org.acoes.entity.RegisteredUser;
 @Local
 public interface PaymentsFacade {
     public List<Payment> getAllPayments();
+    
+    public List<Payment> getUserPayments(Sponsor sponsor);
     
     public Stats getStats();
     

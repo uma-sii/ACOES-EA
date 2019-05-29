@@ -66,28 +66,28 @@
                 </c:when>
                 <c:otherwise>
                     <h:dataTable id="table" value="#{paymentsStats.getPayments()}" var="entry">
-                    <h:column>
-                        <f:facet name="header">Concept</f:facet>
-                        <h:outputText value="#{entry.concept}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Income ($/Quota)</f:facet>
-                        <h:outputText value="#{entry.amount}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Payment Method</f:facet>
-                        <h:outputText value="#{entry.paymentMethod}"/>
-                    </h:column>
-                        
-                    <h:column>
-                        <f:facet name="header">Timestamp</f:facet>
-                        <h:outputText value="#{entry.timestamp}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Benefactor</f:facet>
-                        <h:outputText value="#{entry.benefactor.email}"/>
-                    </h:column>
-                </h:dataTable>
+                        <h:column>
+                            <f:facet name="header">Concept</f:facet>
+                            <h:outputText value="#{entry.concept}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Income ($/Quota)</f:facet>
+                            <h:outputText value="#{entry.amount}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Payment Method</f:facet>
+                            <h:outputText value="#{entry.paymentMethod}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Timestamp</f:facet>
+                            <h:outputText value="#{entry.timestamp}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Benefactor</f:facet>
+                            <h:outputText value="#{entry.benefactor.email}"/>
+                        </h:column>
+                    </h:dataTable>
                 <p></p>
                 <b>Total amount:</b> <h:outputText value=" $#{paymentsStats.totalAmount()}"></h:outputText><br/>
                 <b>Number of benefactors:</b> <h:outputText value=" #{paymentsStats.numberOfBenefactors()}"></h:outputText>
