@@ -9,9 +9,13 @@ import org.acoes.entity.RegisteredUser;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.LinkedHashMap;
+import java.util.Locale;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
 import org.acoes.business.AdminsFacade;
 import org.acoes.business.PaymentsFacade;
 import org.acoes.business.SponsorshipsFacade;
@@ -25,6 +29,16 @@ import org.acoes.entity.Sponsor;
 @Named(value = "sessionControl")
 @SessionScoped
 public class SessionControl implements Serializable {
+    
+    private String locale;
+
+    private static Map<String,Object> countries;
+    
+    static {
+       countries = new LinkedHashMap<>();
+       countries.put("English", Locale.ENGLISH);
+       countries.put("Spanish", new Locale("es", "ES"));
+    }
     
     private RegisteredUser user;
 
@@ -42,7 +56,7 @@ public class SessionControl implements Serializable {
     
     private Language lang;
     
-    public SessionControl(){ 
+    public SessionControl(){
         lang = Language.SPANISH;
     }
     
@@ -78,11 +92,11 @@ public class SessionControl implements Serializable {
         return adminsServices;
     }
     
-    public void setLang(Language language){
+    public synchronized void setLang(Language language){
         this.lang = language;
     }
     
-    public Language getLang(){
+    public synchronized Language getLang(){
         return lang;
     }
     
@@ -118,4 +132,27 @@ public class SessionControl implements Serializable {
         user = null;
         return "index.xhtml";
     }
+
+    public Map<String, Object> getCountries() {
+      return countries;
+   }
+
+   public String getLocale() {
+      return locale;
+   }
+
+   public void setLocale(String locale) {
+      this.locale = locale;
+   }
+
+   //value change event listener
+   public void localeChanged(ValueChangeEvent e) {
+      String newLocaleValue = e.getNewValue().toString();
+      for (Map.Entry<String, Object> entry : countries.entrySet()) {
+         if(entry.getValue().toString().equals(newLocaleValue)) {
+            FacesContext.getCurrentInstance()
+               .getViewRoot().setLocale((Locale)entry.getValue());         
+         }
+      }
+   }
 }

@@ -7,44 +7,20 @@
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:define name="title">
-        ACOES - <c:choose>
-                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                        How can I help?
-                    </c:when>
-                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                        ¿Cómo puedo ayudar?
-                    </c:when>
-                </c:choose>
+        ACOES - #{locale_msg.how_can_i_help}
     </ui:define>
 
-    <ui:define name="content">
-        <c:choose>
-            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                <c:set var="h_title" value="How can I help?"/>
-                <c:set var="h_subtitle" value="Do you want to colaborate with ACOES? Fill in this form and we will contact you."/>
-                <c:set var="quantity_label" value="Quantity"/>
-                <c:set var="donate_form_fieldset" value="How much do you want to donate?"/>
-                <c:set var="donate_btn" value="Donate"/>
-            </c:when>
-            <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                <c:set var="h_title" value="¿Cómo puedo ser de ayuda?"/>
-                <c:set var="h_subtitle" value="¿Quiere colaborar con ACOES? Rellene este formulario y contactaremos con usted."/>
-                <c:set var="quantity_label" value="Cantidad"/>
-                <c:set var="donate_form_fieldset" value="¿Cuánto quiere donar?"/>
-                <c:set var="donate_btn" value="Donar"/>
-            </c:when>
-        </c:choose>
-        
-        <h2>#{h_title}</h2>
+    <ui:define name="content">        
+        <h2>#{locale_msg.how_can_i_help}</h2>
         <hr/>
         <p>
            <c:choose>
-                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                <c:when test="#{locale_msg.lang == 'en'}">
                     Thanks to your donations and help, more than 8.000 children have food on their table
                     and access to education in a country where one out of three young people is analphabet,
                     and doesn't have a proper nutrition.
                 </c:when>
-                <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                <c:when test="#{locale_msg.lang == 'es'}">
                     Gracias a tus donaciones y ayuda, más de 8.000 niños tienen comidas en sus mesas, y
                     acceso a una educación en un país en el que 1 de cada 3 jóvenes es analfabeto y 
                     no tiene una alimentación adecuada.
@@ -53,11 +29,11 @@
         </p>
         <h:form style="width: 50%">
             <fieldset>
-                <legend>#{donate_form_fieldset}</legend>
-                <label for="quantity">#{quantity_label}</label><br/>
+                <legend>#{locale_msg.donate_form_fieldset}</legend>
+                <label for="quantity">#{locale_msg.quantity}</label><br/>
                 
                 <c:choose>
-                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                    <c:when test="#{locale_msg.lang == 'en'}">
                         <h:inputText value="#{donation.amount}" class="form-control" required="true"
                                 converterMessage="Please enter a number greater than 0"
                                 validatorMessage="Please enter a number greater than 0">
@@ -65,7 +41,7 @@
                             <f:validateLongRange minimum="1"/>
                         </h:inputText>
                     </c:when>
-                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                    <c:when test="#{locale_msg.lang == 'es'}">
                         <h:inputText value="#{donation.amount}" class="form-control" required="true"
                                 converterMessage="Por favor, introduzca un número mayor que 0"
                                 validatorMessage="Por favor, introduzca un número mayor que 0">
@@ -78,7 +54,7 @@
                 <br />
             </fieldset>
             <h:panelGrid columns="2" cellpadding="5">
-                <h:commandButton type="submit" class="btn btn-primary" value="#{donate_btn}" action="#{donation.donate()}"/>
+                <h:commandButton type="submit" class="btn btn-primary" value="#{locale_msg.btn_donate}" action="#{donation.donate()}"/>
             </h:panelGrid>
         </h:form>
         <p></p>

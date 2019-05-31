@@ -10,13 +10,14 @@
     <ui:param name="must_be_logged_in" value="true"></ui:param>
     
     <ui:define name="title">
-        ACOES - My information
+        ACOES - #{locale_msg.menu_my_information}
     </ui:define>
     
-    <ui:define name="content">       
+    <ui:define name="content">
+        <h3>#{locale_msg.menu_my_information}</h3>
         
-        <h3>My information</h3>
         <hr></hr>
+        
         <div style="margin:20px 20px 25px 20px;" class="w3-border w3-padding w3-padding-32">
         <h:form class="needs-validation">
             <label>Email:</label>
@@ -25,7 +26,7 @@
             </h:inputText>
             <h:message for="email" style="color:red"></h:message><br/>
             
-            <label>Password:</label>
+            <label>#{locale_msg.password}:</label>
             <h:inputSecret id="password" redisplay="true" class="form-control" value="#{sessionControl.user.password}">
                 <f:validator validatorId="PasswordValidator" />
             </h:inputSecret>
@@ -36,36 +37,41 @@
             <c:choose>
                 <c:when test="#{sessionControl.usersServices.isAdmin(sessionControl.user)}">
                     <fieldset>
-                        <legend>Administrator information</legend>
-                        Group: <h:inputText class="form-control" value="#{sessionControl.admin.adminGroup}"/><br/>
-                        Workplace: <h:inputText class="form-control" value="#{sessionControl.admin.workplace}"/><br/>
+                        <legend>#{h_admin_info}</legend>
+                        #{locale_msg.group}: <h:inputText class="form-control" value="#{sessionControl.admin.adminGroup}"/><br/>
+                        #{locale_msg.workplace}: <h:inputText class="form-control" value="#{sessionControl.admin.workplace}"/><br/>
                     </fieldset>
                 </c:when>
                 <c:when test="#{sessionControl.usersServices.isSponsor(sessionControl.user)}">
                     <fieldset>
-                        <legend>Personal information</legend>
-                        DNI: <h:inputText readonly='true' class="form-control" value="#{sessionControl.sponsor.DNI}"/><br/>
-                        First name: <h:inputText class="form-control" value="#{sessionControl.sponsor.firstName}"/><br/>
-                        Last name: <h:inputText class="form-control" value="#{sessionControl.sponsor.lastName}"/><br/>
-                        Gender: <h:selectOneMenu class="form-control" value="#{sessionControl.sponsor.gender}">
-                                    <f:selectItem itemValue="MALE" itemLabel="Male" />
-                                    <f:selectItem itemValue="FEMALE" itemLabel="Female" />
-                                </h:selectOneMenu><br/>
-                        Phone number: <h:inputText class="form-control" value="#{sessionControl.sponsor.phoneNumber}"/><br/>
+                        <legend>#{locale_msg.personal_info}</legend>
+                        #{locale_msg.personal_id}: <h:inputText readonly='true' class="form-control" value="#{sessionControl.sponsor.DNI}"/><br/>
+                        #{locale_msg.first_name}: <h:inputText class="form-control" value="#{sessionControl.sponsor.firstName}"/><br/>
+                        #{locale_msg.last_name}: <h:inputText class="form-control" value="#{sessionControl.sponsor.lastName}"/><br/>
+                        #{locale_msg.gender}: <h:selectOneMenu class="form-control" value="#{sessionControl.sponsor.gender}">
+                                        <c:choose>
+                                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                                <f:selectItem itemValue="MALE" itemLabel="Male" />
+                                                <f:selectItem itemValue="FEMALE" itemLabel="Female" />
+                                            </c:when>
+                                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                                <f:selectItem itemValue="MALE" itemLabel="Hombre" />
+                                                <f:selectItem itemValue="FEMALE" itemLabel="Mujer" />
+                                            </c:when>
+                                        </c:choose>
+                                     </h:selectOneMenu><br/>
+                        #{locale_msg.phone_number}: <h:inputText class="form-control" value="#{sessionControl.sponsor.phoneNumber}"/><br/>
                     </fieldset>
                     <fieldset>
-                        <legend>Place of residence</legend>
-                        Address: <h:inputText class="form-control" value="#{sessionControl.sponsor.address}"/><br/>
-                        City: <h:inputText class="form-control" value="#{sessionControl.sponsor.city}"/><br/>
-                        Country: <h:inputText class="form-control" value="#{sessionControl.sponsor.country}"/><br/>
-                        ZIP Code: <h:inputText class="form-control" value="#{sessionControl.sponsor.zipcode}"/><br/>
+                        <legend>#{locale_msg.residence}</legend>
+                        #{locale_msg.address}: <h:inputText class="form-control" value="#{sessionControl.sponsor.address}"/><br/>
+                        #{locale_msg.city}: <h:inputText class="form-control" value="#{sessionControl.sponsor.city}"/><br/>
+                        #{locale_msg.country}: <h:inputText class="form-control" value="#{sessionControl.sponsor.country}"/><br/>
+                        #{locale_msg.zipcode}: <h:inputText class="form-control" value="#{sessionControl.sponsor.zipcode}"/><br/>
                     </fieldset>
                 </c:when>
-                <c:otherwise>
-                    
-                </c:otherwise>
             </c:choose>
-        <h:commandButton class="btn btn-primary" value="Save changes" action="#{sessionControl.refreshUser()}"></h:commandButton>
+            <h:commandButton class="btn btn-primary" value="#{locale_msg.btn_save}" action="#{sessionControl.refreshUser()}"/>
         </h:form>
         </div>
     </ui:define>

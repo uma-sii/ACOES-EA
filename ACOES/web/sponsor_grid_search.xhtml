@@ -10,7 +10,7 @@
     <ui:param name="admin_only" value="true"></ui:param>
     
     <ui:define name="title">
-        Sponsor Search
+        ACOES - #{locale_msg.menu_sponsor_search}
     </ui:define>
 
     <ui:define name="content">
@@ -55,33 +55,47 @@
                      background: #0b7dda;
                  }
             </style>
-
-         <h3>Sponsors</h3>
-         <hr/>
-         <c:set var="sponsorsList" value="#{sessionControl.sponsorshipsServices.getSponsors(true)}" scope="request" />
-            
+        
+        <c:choose>
+            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                <c:set var="h_title" value="Sponsors"/>
+                <c:set var="no_sponsors_msg" value="There are no sponsors."/>
+                <c:set var="subscription_type" value="Subscription Type"/>
+                <c:set var="monthly" value="Monthly"/>
+                <c:set var="yearly" value="Yearly"/>
+            </c:when>
+            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                <c:set var="h_title" value="Patrocinadores"/>
+                <c:set var="no_sponsors_msg" value="No se encontraron patrocinadores."/>
+                <c:set var="subscription_type" value="Tipo de subscripción"/>
+                <c:set var="monthly" value="Mensual"/>
+                <c:set var="yearly" value="Anual"/>
+            </c:when>
+        </c:choose>
+        
+        <h3>#{locale_msg.menu_sponsors}</h3>
+        <hr/>
+        
+        <c:set var="sponsorsList" value="#{sessionControl.sponsorshipsServices.getSponsors(true)}" scope="request" />
         <c:choose>
             <c:when test="#{sponsorsList.isEmpty()}">
-                There are no sponsors.
+                #{locale_msg.no_sponsors_msg}
             </c:when>
             <c:otherwise>
                 <h:dataTable id="table" value="#{sponsorsList}" var="entry">
-                <h:column>
-                    <f:facet name="header">Email</f:facet>
-                    <h:outputText value="#{entry.email}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Subscription Type</f:facet>
-                    <h:outputText value="#{entry.subscriptionType}"/>
-                </h:column>
-            </h:dataTable>
+                    <h:column>
+                        <f:facet name="header">Email</f:facet>
+                        <h:outputText value="#{entry.email}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{subscription_type}</f:facet>
+                        <c:set var="bool_monthly" value="#{entry.subscriptionType == 'MONTHLY'}"/>
+                        <c:set var="bool_yearly" value="#{entry.subscriptionType == 'YEARLY'}"/>
+                        <h:outputText value="#{monthly}" rendered="#{bool_monthly}"/>
+                        <h:outputText value="#{yearly}" rendered="#{bool_yearly}"/>
+                    </h:column>
+                </h:dataTable>
             </c:otherwise>
         </c:choose>
-
-         <!--<p></p>
-         <form class="example" action="/action_page.php">
-             <input type="text" placeholder="Search Sponsor.." name="search" />
-             <button type="submit"><i class="fa fa-search"></i></button>
-         </form>-->
     </ui:define>
 </ui:composition>

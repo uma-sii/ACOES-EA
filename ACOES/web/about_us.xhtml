@@ -16,7 +16,7 @@
     <ui:param name="ignore_padding" value=""/>
     
     <ui:define name="title">
-        ACOES - About us
+        ACOES - #{locale_msg['about_us']}
     </ui:define>
 
     <ui:define name="content">
@@ -47,7 +47,7 @@
             
             #info{
                 width: 100%;
-                margin-bottom: 200px;
+                margin-bottom: 100px;
             }
             
             #info td{
@@ -58,10 +58,6 @@
             }
         </style>
         
-        <!--<section id="header">
-                
-        </section>-->
-        
         <section id="picture"></section>
         
         <section id="info">
@@ -69,76 +65,28 @@
                 <tr>
                     <td>
                         <h4>
-                            <c:choose>
-                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                                    100% Volunteering
-                                </c:when>
-                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                                    100% Voluntariado
-                                </c:when>
-                            </c:choose>
+                            #{locale_msg['volunteering_100']}
                         </h4>
                         <p>
-                            <c:choose>
-                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                                    Volunteer work as a form of solidarity and social responsibility
-                                    towards social injustices. 
-                                </c:when>
-                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                                    Voluntariado como una forma de solidaridad y responsabilidad social
-                                    respecto a las injusticias sociales.
-                                </c:when>
-                            </c:choose>
+                            #{locale_msg['volunteering_100_body']}
                         </p>
                     </td>
                     
                     <td>
                         <h4>
-                            <c:choose>
-                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                                    Invest in values
-                                </c:when>
-                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                                    Invertir en valores
-                                </c:when>
-                            </c:choose>
+                            #{locale_msg['invest_in_values']}
                         </h4>
                         <p>
-                            <c:choose>
-                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                                    We work for the education and integral development of the human 
-                                    being in the most underprivileged sectors of the population. 
-                                </c:when>
-                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                                    Trabajamos para la educación y el desarrollo integral del ser
-                                    humano en los sectores de población más desfavorecidos.
-                                </c:when>
-                            </c:choose>
+                            #{locale_msg['invest_in_values_body']}
                         </p>
                     </td>
                     
                     <td>
                         <h4>
-                            <c:choose>
-                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                                    +200 volunteers
-                                </c:when>
-                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                                    +200 voluntarios
-                                </c:when>
-                            </c:choose>
+                            #{locale_msg['volunteers_200']}
                         </h4>
                         <p>
-                            <c:choose>
-                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                                    More than 1000 collaborators, including volunteers, 
-                                    scholarship holders and collaborating partners. 
-                                </c:when>
-                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                                    Más de 1000 colaboradores, incluyendo voluntarios,
-                                    becantes y socios colaboradores.
-                                </c:when>
-                            </c:choose>
+                            #{locale_msg['volunteers_200_body']}
                         </p>
                     </td>
                 </tr>

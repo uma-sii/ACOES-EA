@@ -22,20 +22,20 @@
         <div id="home" style="height: 50%">
             <h1 style="font-weight: 900; font-size: 50px; letter-spacing: -0.04em; color: rgb(58, 145, 255);" align="center">
                 <c:choose>
-                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                    <c:when test="#{locale_msg.lang == 'en'}">
                         Do you want to make the world
                     </c:when>
-                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                    <c:when test="#{locale_msg.lang == 'es'}">
                         ¿Quiere hacer del mundo
                     </c:when>
                 </c:choose>
             </h1>
             <h1 style="font-weight: 900; font-size: 50px; letter-spacing: -0.04em; color: rgb(58, 145, 255);" align="center">
                 <c:choose>
-                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                    <c:when test="#{locale_msg.lang == 'en'}">
                         a better place?
                     </c:when>
-                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                    <c:when test="#{locale_msg.lang == 'es'}">
                         un lugar mejor?
                     </c:when>
                 </c:choose>
@@ -45,10 +45,10 @@
             
             <h4 style="font-weight: 400; font-size: 25px; letter-spacing: -0.04em; color: #212529;" align="center">
                 <c:choose>
-                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                    <c:when test="#{locale_msg.lang == 'en'}">
                         I do. I would like to
                     </c:when>
-                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                    <c:when test="#{locale_msg.lang == 'es'}">
                         Sí. Me gustaría
                     </c:when>
                 </c:choose>
@@ -56,11 +56,11 @@
             <br></br>
             <h:panelGrid style="margin: 0 auto;" columns="2" cellpadding="5">
                 <c:choose>
-                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                    <c:when test="#{locale_msg.lang == 'en'}">
                         <h:button class="btn btn-primary" value="BECOME A SPONSOR" outcome="registration.xhtml"/>    
                         <h:button class="btn btn-secondary" value="MAKE A DONATION" outcome="donate.xhtml"/>
                     </c:when>
-                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                    <c:when test="#{locale_msg.lang == 'es'}">
                         <h:button class="btn btn-primary" value="SER PATROCINADOR" outcome="registration.xhtml"/>    
                         <h:button class="btn btn-secondary" value="HACER DONACIÓN" outcome="donate.xhtml"/>
                     </c:when>
@@ -156,10 +156,10 @@
             <div class="col70">
                 <h2>
                     <c:choose>
-                        <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                        <c:when test="#{locale_msg.lang == 'en'}">
                             Learn about our latest stories
                         </c:when>
-                        <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                        <c:when test="#{locale_msg.lang == 'es'}">
                             Conoce nuestras últimas historias
                         </c:when>
                     </c:choose>
@@ -170,7 +170,7 @@
                     </div>
                     <div class="col65">
                         <c:choose>
-                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                            <c:when test="#{locale_msg.lang == 'en'}">
                                 <h3>SOLIDARY ONLINE SHOPPING AND COLLABORATE WITH ACOES</h3>
                                 <p>
                                     WAPSI is a solidarity shopping platform over the internet. 
@@ -180,7 +180,7 @@
                                     and THE MOST IMPORTANT: without that YOU HAVE ANY EURO MORE THAN what your purchase costs you.
                                 </p>
                             </c:when>
-                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                            <c:when test="#{locale_msg.lang == 'es'}">
                                 <h3>COMPRAS SOLIDARIAS ONLINE Y COLABORA CON ACOES</h3>
                                 <p>
                                     WAPSI es una plataforma de compras solidarias por internet.
@@ -200,7 +200,7 @@
                     </div>
                     <div class="col65">
                         <c:choose>
-                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                            <c:when test="#{locale_msg.lang == 'en'}">
                                 <h3>ELOÍSA's AND FATHER ÁLVARO's 2019 TOUR IN SPAIN</h3>
                                 <p>
                                     The missionaries Eloísa Muela and Father Álvaro Ramos are in Spain to make a two-month route 
@@ -208,7 +208,7 @@
                                     They will talk and show videos of the projects that ACOES carries out in Honduras.
                                 </p>
                             </c:when>
-                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                            <c:when test="#{locale_msg.lang == 'es'}">
                                 <h3>RUTA 2019 DE ELOÍSA Y DEL PADRE ÁLVARO POR ESPAÑA</h3>
                                 <p>
                                     Los misioneros Eloísa Muela y el  Padre Álvaro Ramos se encuentran en España para realizar una ruta de dos meses
@@ -225,7 +225,7 @@
                     </div>
                     <div class="col65">                     
                         <c:choose>
-                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                            <c:when test="#{locale_msg.lang == 'en'}">
                                 <h3>FIRST PRIESTLY ANIVERSARY OF ÁLVARO RAMOS</h3>
                                 <p>
                                     Today Father Álvaro Ramos celebrates his First Priestly Anniversary. 
@@ -233,7 +233,7 @@
                                     will give him strength in his mission to help those who need it.
                                 </p>
                             </c:when>
-                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                            <c:when test="#{locale_msg.lang == 'es'}">
                                 <h3>I ANIVERSARIO SACERDOTAL DE ÁLVARO RAMOS</h3>
                                 <p>
                                     Hoy el Padre Álvaro Ramos celebra su Primer Aniversario Sacerdotal.
@@ -251,10 +251,10 @@
                 <div class="followus">
                     <span>
                         <c:choose>
-                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                            <c:when test="#{locale_msg.lang == 'en'}">
                                 Follow us in the social media
                             </c:when>
-                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                            <c:when test="#{locale_msg.lang == 'es'}">
                                 Síguenos en redes sociales
                             </c:when>
                         </c:choose>

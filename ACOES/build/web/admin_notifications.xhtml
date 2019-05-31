@@ -10,14 +10,7 @@
     <ui:param name="admin_only" value="true"></ui:param>
     
     <ui:define name="title">
-        ACOES - <c:choose>
-                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                        Notifications
-                    </c:when>
-                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                        Notificaciones
-                    </c:when>
-                </c:choose>
+        ACOES - #{locale_msg['menu_admin_notifications']}
     </ui:define>
 
     <ui:define name="content">
@@ -64,33 +57,29 @@
                  background: #0b7dda;
              }
              
-             btn{
-                 width: 200px;
+             .btn{
+                 width: 50%;
+             }
+             
+             .btn-success{
+                 border-top-right-radius: 0;
+                 border-bottom-right-radius: 0;
+             }
+             
+             .btn-danger{
+                 border-top-left-radius: 0;
+                 border-bottom-left-radius: 0;
              }
         </style>       
 
         <h3>
-            <c:choose>
-                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                    Pending approvals for sponsorship
-                </c:when>
-                <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                    Solicitudes para ser patrocinador pendientes
-                </c:when>
-            </c:choose>
+            #{locale_msg['pending_approvals']}
         </h3>
         <hr/>
         
         <c:choose>
             <c:when test="#{sessionControl.adminsServices.notifications.isEmpty()}">
-                <c:choose>
-                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                        There are no notifications.
-                    </c:when>
-                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                        No tienes notificaciones.
-                    </c:when>
-                </c:choose>
+                #{locale_msg['no_notifications']}
             </c:when>
             <c:otherwise>        
                 <h:dataTable id="table" value="#{sessionControl.adminsServices.notifications}" var="entry">
@@ -103,54 +92,25 @@
 
                     <h:column>
                         <f:facet name="header">
-                            <c:choose>
-                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                                    Applicant
-                                </c:when>
-                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                                    Solicitante
-                                </c:when>
-                            </c:choose>
+                            #{locale_msg['applicant']}
                         </f:facet>
                         <h:outputText value="#{entry.applicant.email}"/>
                     </h:column>
                     
                     <h:column>
                         <f:facet name="header">
-                            <c:choose>
-                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                                    Timestamp
-                                </c:when>
-                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                                    Fecha de solicitud
-                                </c:when>
-                            </c:choose>
+                            #{locale_msg.timestamp}
                         </f:facet>
                         <h:outputText value="#{entry.dateOfRequest}"/>
                     </h:column>
 
                     <h:column>
                         <f:facet name="header">
-                            <c:choose>
-                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                                    Allow/Decline
-                                </c:when>
-                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                                    Aceptar/Rechazar
-                                </c:when>
-                            </c:choose>
+                            #{locale_msg.accept}/#{locale_msg.decline}
                         </f:facet>
                         <h:form>
-                            <c:choose>
-                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                                    <h:commandButton class="btn btn-success" value="Accept" action="#{sessionControl.adminsServices.setRequestStatus(entry, true)}"/>
-                                    <h:commandButton class="btn btn-danger" value="Decline" action="#{sessionControl.adminsServices.setRequestStatus(entry, false)}"/>
-                                </c:when>
-                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                                    <h:commandButton class="btn btn-success" value="Aceptar" action="#{sessionControl.adminsServices.setRequestStatus(entry, true)}"/>
-                                    <h:commandButton class="btn btn-danger" value="Rechazar" action="#{sessionControl.adminsServices.setRequestStatus(entry, false)}"/>
-                                </c:when>
-                            </c:choose>
+                            <h:commandButton class="btn btn-success" value="#{locale_msg.accept}" action="#{sessionControl.adminsServices.setRequestStatus(entry, true)}"/>
+                            <h:commandButton class="btn btn-danger" value="#{locale_msg.decline}" action="#{sessionControl.adminsServices.setRequestStatus(entry, false)}"/>
                         </h:form>
                     </h:column>
                 </h:dataTable>

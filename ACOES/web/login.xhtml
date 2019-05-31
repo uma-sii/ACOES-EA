@@ -10,14 +10,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
     <h:head>
-        <title>ACOES - <c:choose>
-                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                                Login
-                            </c:when>
-                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                                Iniciar sesión
-                            </c:when>
-                        </c:choose>
+        <title>ACOES - #{locale_msg.login}
         </title>
         <h:outputStylesheet library="css" name="bootstrap.css"  />
     </h:head>
@@ -25,14 +18,7 @@
         <div class="panel panel-default" style="margin: 40px 300px; background-color: white; padding: 20px">
             <div class="panel-header" style="text-align: center">
                 <h2>
-                    <c:choose>
-                        <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                            Login
-                        </c:when>
-                        <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                            Iniciar sesión
-                        </c:when>
-                    </c:choose>
+                    #{locale_msg.login}
                 </h2>
                 <hr/>
             </div>
@@ -40,7 +26,7 @@
                 <h:form style="padding: 20px;">
                     <h:panelGrid columns="1" cellpadding="5" style="width:100%;">
                         <c:choose>
-                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                            <c:when test="#{locale_msg.lang == 'en'}">
                                 <fieldset>
                                     <h:inputText   required="true" class="form-control" pt:placeholder="Email" value="#{login_Controller.email}" />
                                     <h:inputSecret required="true" class="form-control" pt:placeholder="Password" id="nonFeedback" value="#{login_Controller.password}" />
@@ -48,7 +34,7 @@
                                 <h:commandButton class="btn btn-primary" style="width: 100%" value="Log in" action="#{login_Controller.authenticate()}"/>
                                 <h:commandButton class="btn btn-primary" style="width: 100%" value="Create an account" action="registration.xhtml"/>    
                             </c:when>
-                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                            <c:when test="#{locale_msg.lang == 'es'}">
                                 <fieldset>
                                     <h:inputText   required="true" class="form-control" pt:placeholder="Email" value="#{login_Controller.email}" />
                                     <h:inputSecret required="true" class="form-control" pt:placeholder="Contraseña" id="nonFeedback" value="#{login_Controller.password}" />

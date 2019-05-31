@@ -156,7 +156,7 @@ public class Sponsor extends RegisteredUser {
     public void setSubscriptionType(SubscriptionType type){
         subscriptionType = type;
     }
-    
+
     @Override
     public String toString() {
         return "Sponsor(" + email + ")";

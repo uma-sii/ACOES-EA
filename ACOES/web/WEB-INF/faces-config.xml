@@ -11,5 +11,17 @@
     <validator>
 	<validator-id>PasswordValidator</validator-id>
 	<validator-class>org.acoes.view.validator.PasswordValidator</validator-class>
-    </validator>         
+    </validator>
+    
+    <application>
+        <locale-config>
+           <default-locale>en</default-locale>
+           <supported-locale>es_ES</supported-locale>
+        </locale-config>
+
+        <resource-bundle>
+           <base-name>org.messages</base-name>
+           <var>locale_msg</var>
+        </resource-bundle>
+    </application>      
 </faces-config>

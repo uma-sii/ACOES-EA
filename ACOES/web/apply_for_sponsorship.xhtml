@@ -15,28 +15,14 @@
     <ui:param name="must_be_logged_in" value="true"></ui:param>
     
     <ui:define name="title">
-        ACOES - <c:choose>
-                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                        Apply for sponsorship
-                    </c:when>
-                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                        Solicitar patrocinio 
-                    </c:when>
-                </c:choose>
+        ACOES - #{locale_msg.menu_apply_for_sponsorship}
     </ui:define>
 
     <ui:define name="content">
         
-        <h2>
-            <c:choose>
-                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                    Sponsorship application
-                </c:when>
-                <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                    Solicitud de patrocinio
-                </c:when>
-            </c:choose>
-        </h2>
+        <h3>
+            #{locale_msg.sponsorship_application}
+        </h3>
         <hr/>
         <h:form class="card">
             <div class="card-body p-5">
@@ -45,14 +31,7 @@
                         <li class="nav-item">
                                 <a class="nav-link active" data-toggle="pill" href="#nav-tab-card">
                                     <i class="fa fa-credit-card"></i>
-                                    <c:choose>
-                                        <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                                            Credit Card
-                                        </c:when>
-                                        <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                                            Tarjeta de crédito
-                                        </c:when>
-                                    </c:choose>
+                                    #{locale_msg.credit_card}
                                 </a>
                         </li>
                         <li class="nav-item">
@@ -65,40 +44,19 @@
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="nav-tab-card">
                         <p class="alert alert-success">
-                            <c:choose>
-                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                                    Please write your payment credentials
-                                </c:when>
-                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                                    Por favor, rellene sus credenciales de pago
-                                </c:when>
-                            </c:choose>
+                            #{locale_msg.please_fill_card_credentials}
                         </p>
                         <form role="form">
                             <div class="form-group">
                                 <label for="username">
-                                    <c:choose>
-                                        <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                                            Full name (on the card)
-                                        </c:when>
-                                        <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                                            Nombre completo (en la tarjeta)
-                                        </c:when>
-                                    </c:choose>
+                                    #{locale_msg.card_full_name}
                                 </label>
                                 <input type="text" class="form-control" name="username" placeholder="" required=""></input>
                             </div> 
 
                             <div class="form-group">
                                 <label for="cardNumber">
-                                    <c:choose>
-                                        <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                                            Card number
-                                        </c:when>
-                                        <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                                            Número de tarjeta
-                                        </c:when>
-                                    </c:choose>
+                                    #{locale_msg.card_number}
                                 </label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="cardNumber" placeholder=""></input>
@@ -147,10 +105,10 @@
                                 </div>
                             </div>
                             <c:choose>
-                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                <c:when test="#{locale_msg.lang == 'en'}">
                                     <h:commandButton type="submit" class="btn btn-primary" value="Confirm" action="#{donation.donate()}"/>
                                 </c:when>
-                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                <c:when test="#{locale_msg.lang == 'es'}">
                                     <h:commandButton type="submit" class="btn btn-primary" value="Confirmar" action="#{donation.donate()}"/>
                                 </c:when>
                             </c:choose>
@@ -159,10 +117,10 @@
                     <div class="tab-pane fade" id="nav-tab-paypal">
                         <p>
                             <c:choose>
-                                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                <c:when test="#{locale_msg.lang == 'en'}">
                                     PayPal is easiest way to pay online
                                 </c:when>
-                                <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                <c:when test="#{locale_msg.lang == 'es'}">
                                     PayPal es la forma más sencilla de pagar online
                                 </c:when>
                             </c:choose>
@@ -170,20 +128,20 @@
                         <p>
                             <button type="button" class="btn btn-primary"> <i class="fab fa-paypal"></i>
                                 <c:choose>
-                                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                    <c:when test="#{locale_msg.lang == 'en'}">
                                         Log in my PayPal
                                     </c:when>
-                                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                    <c:when test="#{locale_msg.lang == 'es'}">
                                         Iniciar sesión en PayPal
                                     </c:when>
                                 </c:choose>
                             </button>
                         </p>
                         <c:choose>
-                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                            <c:when test="#{locale_msg.lang == 'en'}">
                                 <p><strong>Note:</strong> You will be redirected to PayPal's domain. </p>
                             </c:when>
-                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                            <c:when test="#{locale_msg.lang == 'es'}">
                                 <p><strong>Nota:</strong> Será redirigido a la página de PayPal. </p>
                             </c:when>
                         </c:choose>

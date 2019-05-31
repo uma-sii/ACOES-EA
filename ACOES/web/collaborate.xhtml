@@ -10,62 +10,50 @@
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     
     <ui:define name="title">
-        ACOES - <c:choose>
-                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                        Work with us
-                    </c:when>
-                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                        Trabaja con nosotros
-                    </c:when>
-                </c:choose>
+        ACOES - #{locale_msg.work_with_us}
     </ui:define>
 
-    <ui:define name="content">
-        <c:choose>
-            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                <c:set var="h_title" value="Help ACOES make a better world"/>
-                <c:set var="h_subtitle" value="Do you want to colaborate with ACOES? Fill in this form and we will contact you."/>
-                <c:set var="placeholder_firstname" value="Your First Name"/>
-                <c:set var="placeholder_lastname" value="Your Last Name"/>
-                <c:set var="placeholder_email" value="Your Email"/>
-                <c:set var="placeholder_message" value="Enter your message here..."/>
-                <c:set var="btn_value" value="Send"/>
-            </c:when>
-            <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                <c:set var="h_title" value="Ayuda a ACOES a hacer un mundo mejor"/>
-                <c:set var="h_subtitle" value="¿Quiere colaborar con ACOES? Rellene este formulario y contactaremos con usted."/>
-                <c:set var="placeholder_firstname" value="Nombre"/>
-                <c:set var="placeholder_lastname" value="Apellidos"/>
-                <c:set var="placeholder_email" value="Email"/>
-                <c:set var="placeholder_message" value="Introduzca su mensaje aquí..."/>
-                <c:set var="btn_value" value="Enviar"/>
-            </c:when>
-        </c:choose>
-        
-        <h2>#{h_title}</h2>
+    <ui:define name="content">       
+        <h2>
+            <c:choose>
+                <c:when test="#{locale_msg.lang == 'en'}">
+                    Help ACOES make a better world
+                </c:when>
+                <c:when test="#{locale_msg.lang == 'es'}">
+                    Ayuda a ACOES a hacer un mundo mejor
+                </c:when>
+            </c:choose>
+        </h2>
         <hr/>
         <p>
-            #{h_subtitle}
+            <c:choose>
+                <c:when test="#{locale_msg.lang == 'en'}">
+                    Do you want to colaborate with ACOES? Fill in this form and we will contact you.
+                </c:when>
+                <c:when test="#{locale_msg.lang == 'es'}">
+                    ¿Quiere colaborar con ACOES? Rellene este formulario y contactaremos con usted.
+                </c:when>
+            </c:choose>
         </p>
         <h:form id="volunteer_application">
             <h:panelGrid columns="1" cellpadding="5">
                 <h:panelGrid columns="2">
-                    <h:inputText class="form-control" pt:placeholder="#{placeholder_firstname}" value="#{collaborateController.firstName}"></h:inputText>
-                    <h:inputText class="form-control" pt:placeholder="#{placeholder_lastname}" value="#{collaborateController.lastName}"></h:inputText>
+                    <h:inputText class="form-control" pt:placeholder="#{locale_msg.first_name}" value="#{collaborateController.firstName}"/>
+                    <h:inputText class="form-control" pt:placeholder="#{locale_msg.last_name}" value="#{collaborateController.lastName}"/>
                 </h:panelGrid>
-                <h:inputText class="form-control" pt:placeholder="#{placeholder_email}" value="#{collaborateController.email}"></h:inputText>
+                <h:inputText class="form-control" pt:placeholder="Email" value="#{collaborateController.email}"/>
                 
-                <h:inputTextarea class="form-control" rows="5" pt:placeholder="#{placeholder_message}" value="#{collaborateController.message}"></h:inputTextarea>
+                <h:inputTextarea class="form-control" rows="5" pt:placeholder="#{locale_msg.enter_message}" value="#{collaborateController.message}"/>
                 
-                <h:commandButton type="submit" class="btn btn-primary" value="#{btn_value}" action="#{collaborateController.Send()}"/>
+                <h:commandButton type="submit" class="btn btn-primary" value="#{locale_msg.btn_send}" action="#{collaborateController.Send()}"/>
             </h:panelGrid>
         </h:form>
         
         <c:choose>
-            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+            <c:when test="#{locale_msg.lang == 'en'}">
                 <p>You can also help us economically  <a href="donate.xhtml">donating </a> or sponsoring a child. You must  <a href="registration.xhtml">register</a> before being a sponsor.</p>
             </c:when>
-            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+            <c:when test="#{locale_msg.lang == 'es'}">
                 <p>También puede ayudarnos económicamente haciendo una  <a href="donate.xhtml">donación</a> o <a href="registration.xhtml">registrándose como patrocinador</a>.</p>
             </c:when>
         </c:choose>

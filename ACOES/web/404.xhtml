@@ -7,26 +7,12 @@
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:define name="title">
-        ACOES - <c:choose>
-                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                        Page not found
-                    </c:when>
-                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                        Página no encontrada
-                    </c:when>
-                </c:choose>
+        ACOES - #{locale_msg['page_not_found']}
     </ui:define>
 
     <ui:define name="content">
         <h1>
-            404 - <c:choose>
-                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                        Page not found
-                    </c:when>
-                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                        Página no encontrada
-                    </c:when>
-                </c:choose>
+            404 - #{locale_msg['page_not_found']}
         </h1>
     </ui:define>
 </ui:composition>

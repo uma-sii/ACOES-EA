@@ -9,7 +9,7 @@
     <ui:param name="must_be_logged_in" value="true"></ui:param>
     
     <ui:define name="title">
-        ACOES - My payments
+        ACOES - #{locale_msg.menu_payments}
     </ui:define>
 
     <ui:define name="content">
@@ -53,34 +53,34 @@
                      background: #0b7dda;
                  }
             </style>
-            
-        <h3>Payments</h3>
+           
+        <h3>#{locale_msg.payments}</h3>
         <hr/>
         <c:set var="myPayments" value="#{sessionControl.paymentsServices.getUserPayments(sessionControl.user)}" scope="request" />
         <c:choose>
             <c:when test="#{myPayments.size() > 0}">
                 <h:dataTable id="table" value="#{myPayments}" var="entry">
                         <h:column>
-                            <f:facet name="header">Concept</f:facet>
+                            <f:facet name="header">#{locale_msg.concept}</f:facet>
                             <h:outputText value="#{entry.concept}"/>
                         </h:column>
                         <h:column>
-                            <f:facet name="header">Income ($/Quota)</f:facet>
+                            <f:facet name="header">#{locale_msg.income}</f:facet>
                             <h:outputText value="#{entry.amount}"/>
                         </h:column>
                         <h:column>
-                            <f:facet name="header">Payment Method</f:facet>
+                            <f:facet name="header">#{locale_msg.payment_method}</f:facet>
                             <h:outputText value="#{entry.paymentMethod}"/>
                         </h:column>
 
                         <h:column>
-                            <f:facet name="header">Timestamp</f:facet>
+                            <f:facet name="header">#{locale_msg.timestamp}</f:facet>
                             <h:outputText value="#{entry.timestamp}"/>
                         </h:column>
                     </h:dataTable>
             </c:when>
             <c:otherwise>
-                There are no payments.
+                #{locale_msg.no_payments_msg}
             </c:otherwise>
         </c:choose>
     </ui:define>
