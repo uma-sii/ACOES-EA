@@ -10,7 +10,7 @@
     <ui:param name="admin_only" value="true"></ui:param>
     
     <ui:define name="title">
-        Dashboard
+        ACOES - Dashboard
     </ui:define>
 
     <ui:define name="content">
@@ -62,25 +62,25 @@
             
             <c:choose>
                 <c:when test="#{paymentsStats.getPayments().isEmpty()}">
-                    There are no payments.
+                    #{locale_msg.no_payments_msg}
                 </c:when>
                 <c:otherwise>
                     <h:dataTable id="table" value="#{paymentsStats.getPayments()}" var="entry">
                         <h:column>
-                            <f:facet name="header">Concept</f:facet>
+                            <f:facet name="header">#{locale_msg.concept}</f:facet>
                             <h:outputText value="#{entry.concept}"/>
                         </h:column>
                         <h:column>
-                            <f:facet name="header">Income ($/Quota)</f:facet>
+                            <f:facet name="header">#{locale_msg.income}</f:facet>
                             <h:outputText value="#{entry.amount}"/>
                         </h:column>
                         <h:column>
-                            <f:facet name="header">Payment Method</f:facet>
+                            <f:facet name="header">#{locale_msg.payment_method}</f:facet>
                             <h:outputText value="#{entry.paymentMethod}"/>
                         </h:column>
 
                         <h:column>
-                            <f:facet name="header">Timestamp</f:facet>
+                            <f:facet name="header">#{locale_msg.timestamp}</f:facet>
                             <h:outputText value="#{entry.timestamp}"/>
                         </h:column>
                         <h:column>
@@ -89,8 +89,8 @@
                         </h:column>
                     </h:dataTable>
                 <p></p>
-                <b>Total amount:</b> <h:outputText value=" $#{paymentsStats.totalAmount()}"></h:outputText><br/>
-                <b>Number of benefactors:</b> <h:outputText value=" #{paymentsStats.numberOfBenefactors()}"></h:outputText>
+                <b>#{locale_msg.total_amount}:</b> <h:outputText value=" $#{paymentsStats.totalAmount()}"></h:outputText><br/>
+                <b>#{locale_msg.num_benefactors}:</b> <h:outputText value=" #{paymentsStats.numberOfBenefactors()}"></h:outputText>
 
                 </c:otherwise>
             </c:choose>

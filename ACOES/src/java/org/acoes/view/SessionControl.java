@@ -9,9 +9,14 @@ import org.acoes.entity.RegisteredUser;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.LinkedHashMap;
+import java.util.Locale;
+import java.util.Map;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
 import org.acoes.business.AdminsFacade;
 import org.acoes.business.PaymentsFacade;
 import org.acoes.business.SponsorshipsFacade;
@@ -25,6 +30,16 @@ import org.acoes.entity.Sponsor;
 @Named(value = "sessionControl")
 @SessionScoped
 public class SessionControl implements Serializable {
+    
+    private Locale locale;
+
+    private static Map<String,Object> countries;
+    
+    static {
+       countries = new LinkedHashMap<>();
+       countries.put("Spanish", new Locale("es", "ES"));
+       countries.put("English", Locale.ENGLISH);
+    }
     
     private RegisteredUser user;
 
@@ -40,7 +55,13 @@ public class SessionControl implements Serializable {
     @EJB
     private AdminsFacade adminsServices;
     
-    public SessionControl(){ }
+    
+    public SessionControl(){}
+    
+    @PostConstruct
+    public void init() {
+        locale = FacesContext.getCurrentInstance().getExternalContext().getRequestLocale();
+    }
     
     public void setUser(RegisteredUser user){
         this.user = user;
@@ -106,4 +127,32 @@ public class SessionControl implements Serializable {
         user = null;
         return "index.xhtml";
     }
+
+    public Map<String, Object> getCountries() {
+      return countries;
+   }
+
+   public Locale getLocale(){
+      return locale;
+   }
+
+   public String getLanguage() {
+        return locale.getLanguage();
+    }
+
+    public void setLanguage(String language) {
+        locale = new Locale(language);
+        FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
+    }
+
+   //value change event listener
+   public void localeChanged(ValueChangeEvent e) {
+      String newLocaleValue = e.getNewValue().toString();
+      for (Map.Entry<String, Object> entry : countries.entrySet()) {
+         if(entry.getValue().toString().equals(newLocaleValue)) {
+            FacesContext.getCurrentInstance()
+               .getViewRoot().setLocale((Locale)entry.getValue());         
+         }
+      }
+   }
 }

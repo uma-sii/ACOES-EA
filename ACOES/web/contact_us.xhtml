@@ -4,10 +4,11 @@
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:define name="title">
-        Contact Us
+        ACOES - #{locale_msg.contact_us}
     </ui:define>
 
     <ui:define name="content">
@@ -24,12 +25,22 @@
             }
         </style>
         <body>
-            <h1 align="center">Contact Us</h1>
-            <h2 align="center">Have any questions? We'd love to hear from you.</h2>
-            <h2 align="center" id="lasth2">Here's how to get in touch with us</h2>
-            <p align="center">E-mail: acoessiiuma@gmail.com</p>
-            <p align="center">Call us: +34 01234567890</p>
-            
+            <c:choose>
+                <c:when test="#{locale_msg.lang == 'en'}">
+                    <h1 align="center">Contact Us</h1>
+                    <h2 align="center">Have any questions? We'd love to hear from you.</h2>
+                    <h2 align="center" id="lasth2">Here's how to get in touch with us</h2>
+                    <p align="center">E-mail: acoessiiuma@gmail.com</p>
+                    <p align="center">Call us: +34 01234567890</p>
+                </c:when>
+                <c:when test="#{locale_msg.lang == 'es'}">
+                    <h1 align="center">Contacta con nosotros</h1>
+                    <h2 align="center">¿Tiene alguna duda o problema? Estaremos encantandos de atenderle. </h2>
+                    <h2 align="center" id="lasth2">Puede contactar con nosotros por correo o teléfono</h2>
+                    <p align="center">Correo: acoessiiuma@gmail.com</p>
+                    <p align="center">Llámanos a +34 01234567890</p>
+                </c:when>
+            </c:choose>           
         </body>
         
     </ui:define>
