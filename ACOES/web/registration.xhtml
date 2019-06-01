@@ -31,7 +31,9 @@
                                 <fieldset>
                                     <legend>Account Information</legend>
                                     <h:inputText   required="true" class="form-control" pt:placeholder="Your Email" value="#{register_Controller.email}" />
-                                    <h:inputSecret required="true" class="form-control" pt:placeholder="Password" id="nonFeedback" value="#{register_Controller.password}" />
+                                    <h:inputSecret required="true" class="form-control" pt:placeholder="Password" id="nonFeedback" value="#{register_Controller.password}">
+                                        <f:validator validatorId="PasswordValidator" />
+                                    </h:inputSecret>
                                     <h:inputSecret required="true" class="form-control" pt:placeholder="Repeat Password" value="#{register_Controller.repeatPassword}" />
                                 </fieldset>
 
@@ -69,7 +71,9 @@
                                 <fieldset>
                                     <legend>Información sobre la cuenta</legend>
                                     <h:inputText   required="true" class="form-control" pt:placeholder="Email" value="#{register_Controller.email}" />
-                                    <h:inputSecret required="true" class="form-control" pt:placeholder="Contraseña" id="nonFeedback" value="#{register_Controller.password}" />
+                                    <h:inputSecret required="true" class="form-control" pt:placeholder="Contraseña" id="nonFeedback" value="#{register_Controller.password}">
+                                        <f:validator validatorId="PasswordValidator" />
+                                    </h:inputSecret>
                                     <h:inputSecret required="true" class="form-control" pt:placeholder="Repite la contraseña" value="#{register_Controller.repeatPassword}" />
                                 </fieldset>
 
@@ -102,9 +106,8 @@
                                 <h:commandButton class="btn btn-primary" style="width: 100%" value="CREAR CUENTA" action="#{register_Controller.register()}"/>
                             </h:panelGrid>
                         </c:when>
-                        
-                        <h:messages style="list-style-type: none; color:red"></h:messages>
                     </c:choose>
+                    <h:messages style="list-style-type: none; color:red"></h:messages>
                 </h:form>
             </div>
         </div>
