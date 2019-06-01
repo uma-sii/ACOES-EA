@@ -22,24 +22,6 @@ INSERT INTO REGISTEREDUSER VALUES ('adri@gmail.com',    'SPONSOR', '12345', 'C/ 
 INSERT INTO REGISTEREDUSER VALUES ('raul@gmail.com',    'SPONSOR', '12345', 'C/ Malaga 10', 'Malaga', 'Spain', '222H', 'Raul',    0, 'Lopez', '60320000',     0, null, 23456, null, null);
 INSERT INTO REGISTEREDUSER VALUES ('antonio@gmail.com', 'SPONSOR', '12345', 'C/ Malaga 10', 'Malaga', 'Spain', '222I', 'Antonio', 0, 'Merino', '60120000',    0, null, 23456, null, null);
 
--- NOTIFICATIONS
-INSERT INTO NOTIFICATION VALUES (0, '2019-05-27 23:32:00', 0, 'ana@gmail.com');
-INSERT INTO NOTIFICATION VALUES (1, '2019-02-13 12:23:00', 1, 'juan@gmail.com');
-INSERT INTO NOTIFICATION VALUES (2, '2019-03-20 08:17:00', 0, 'john@gmail.com');
-INSERT INTO NOTIFICATION VALUES (3, '2019-04-01 16:42:00', 1, 'ricardo@gmail.com');
-INSERT INTO NOTIFICATION VALUES (4, '2019-03-08 17:36:00', 0, 'enrique@gmail.com');
-INSERT INTO NOTIFICATION VALUES (5, '2019-04-22 15:20:00', 1, 'lola@gmail.com');
-INSERT INTO NOTIFICATION VALUES (6, '2018-12-21 09:01:00', 0, 'maria@gmail.com');
-INSERT INTO NOTIFICATION VALUES (7, '2019-01-07 11:07:00', 1, 'adri@gmail.com');
-INSERT INTO NOTIFICATION VALUES (8, '2019-04-30 10:16:00', 0, 'raul@gmail.com');
-INSERT INTO NOTIFICATION VALUES (9, '2019-05-01 22:28:00', 1, 'antonio@gmail.com');
-
--- PAYMENTS
-INSERT INTO PAYMENT VALUES (0, 45, 'Donation', 'PayPal', '2019-01-07 11:07:00', 'john@gmail.com');
-INSERT INTO PAYMENT VALUES (1, 4, 'Donation', 'Visa', '2019-03-12 18:07:00', 'ricardo@gmail.com');
-INSERT INTO PAYMENT VALUES (2, 87, 'Donation', 'Visa', '2019-04-08 09:47:00', 'manuel@gmail.com');
-INSERT INTO PAYMENT VALUES (3, 100, 'Subscription', 'Mastercard', '2019-03-01 12:00:00', 'miguel@gmail.com');
-
 -- SPONSOREDCHILD
 INSERT INTO SPONSOREDCHILD VALUES (0, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Juan Carlos', 0, 'Rodriguez', 'manuel@gmail.com');
 INSERT INTO SPONSOREDCHILD VALUES (1, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Manuel',      0, 'Perez', 'cris@gmail.com');
@@ -53,3 +35,19 @@ INSERT INTO SPONSOREDCHILD VALUES (8, 'C/ Honduras 10', 'Honduras', 'Honduras', 
 INSERT INTO SPONSOREDCHILD VALUES (9, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Mercedes',    1, 'Rodriguez', 'alex@gmail.com');
 INSERT INTO SPONSOREDCHILD VALUES (10, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Laura',      1, 'Perez', 'diego@gmail.com');
 INSERT INTO SPONSOREDCHILD VALUES (11, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Cristina',   1, 'Merino', 'miguel@gmail.com');
+INSERT INTO SPONSOREDCHILD VALUES (12, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Jesús',   1, 'Correa', null);
+INSERT INTO SPONSOREDCHILD VALUES (13, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Javier',   1, 'Martinez', null);
+INSERT INTO SPONSOREDCHILD VALUES (14, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Rosalia',   1, 'Fenandez', null);
+INSERT INTO SPONSOREDCHILD VALUES (15, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Daniel',   1, 'Galeano', null);
+INSERT INTO SPONSOREDCHILD VALUES (16, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Marc',   1, 'Ensenyat', null);
+INSERT INTO SPONSOREDCHILD VALUES (17, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Borja',   1, 'Estevez', null);
+INSERT INTO SPONSOREDCHILD VALUES (18, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Antonio',   1, 'Ramirez', null);
+INSERT INTO SPONSOREDCHILD VALUES (19, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Pablo',   1, 'Molina', null);
+INSERT INTO SPONSOREDCHILD VALUES (20, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Agustín',   1, 'Hernandez', null);
+INSERT INTO SPONSOREDCHILD VALUES (21, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Mariam',   1, 'Cobalea', null);
+INSERT INTO SPONSOREDCHILD VALUES (22, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Sixto',   1, 'Sanchez', null);
+INSERT INTO SPONSOREDCHILD VALUES (23, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Pablo',   1, 'Gutierrez', null);
+INSERT INTO SPONSOREDCHILD VALUES (24, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Glenda',   1, 'Ezeiza', null);
+INSERT INTO SPONSOREDCHILD VALUES (25, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Miriam',   1, 'Ascanio', null);
+INSERT INTO SPONSOREDCHILD VALUES (26, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Emilia',   1, 'Merino', null);
+INSERT INTO SPONSOREDCHILD VALUES (27, 'C/ Honduras 10', 'Honduras', 'Honduras', 'Antonio',   1, 'Pizarro', null);

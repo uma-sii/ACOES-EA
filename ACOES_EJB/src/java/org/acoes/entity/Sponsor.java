@@ -37,7 +37,7 @@ public class Sponsor extends RegisteredUser {
     private String firstName;
     private String lastName;
     
-    @OneToMany(mappedBy="sponsor", fetch=FetchType.LAZY)
+    @OneToMany(mappedBy="sponsor", fetch=FetchType.EAGER)
     private List<SponsoredChild> sponsoredChildren = new ArrayList<>();
     
     @OneToMany(cascade = CascadeType.ALL)

@@ -59,7 +59,14 @@
                     <c:when test="#{locale_msg.lang == 'en'}">
                         <c:choose>
                             <c:when test="#{sessionControl.loggedIn()}">
-                                <h:button class="btn btn-primary" value="BECOME A SPONSOR" outcome="apply_for_sponsorship.xhtml"/>  
+                                <c:choose>
+                                    <c:when test="#{sessionControl.usersServices.isAdmin(sessionControl.user) || sessionControl.sponsor.subscriptionType != null}">
+                                        
+                                    </c:when>
+                                    <c:otherwise>
+                                       <h:button class="btn btn-primary" value="BECOME A SPONSOR" outcome="apply_for_sponsorship.xhtml"/> 
+                                    </c:otherwise>
+                                </c:choose>
                             </c:when>
                             <c:otherwise>
                                 <h:button class="btn btn-primary" value="BECOME A SPONSOR" outcome="registration.xhtml"/>  
@@ -71,7 +78,13 @@
                     <c:when test="#{locale_msg.lang == 'es'}">
                         <c:choose>
                             <c:when test="#{sessionControl.loggedIn()}">
-                                <h:button class="btn btn-primary" value="SER PATROCINADOR" outcome="apply_for_sponsorship.xhtml"/>  
+                                <c:choose>
+                                    <c:when test="#{sessionControl.usersServices.isAdmin(sessionControl.user) || sessionControl.sponsor.subscriptionType != null}">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <h:button class="btn btn-primary" value="SER PATROCINADOR" outcome="apply_for_sponsorship.xhtml"/>
+                                    </c:otherwise>
+                                </c:choose>
                             </c:when>
                             <c:otherwise>
                                 <h:button class="btn btn-primary" value="SER PATROCINADOR" outcome="registration.xhtml"/>  

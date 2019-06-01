@@ -74,10 +74,6 @@
                 #{locale_msg['admins_dont_sponsor']}
             </c:when>
             
-            <c:when test="#{sessionControl.usersServices.isSponsor(sessionControl.user)}">
-                #{locale_msg['already_a_sponsor']}                
-            </c:when>
-            
             <c:otherwise>
                 
                 <h3>
@@ -223,12 +219,11 @@
                         </div> 
                     </h:form> 
                 <p></p>
-                <h:messages style="list-style: none; color: red"></h:messages>
-                <h:outputText id="sponsorshipMessage" value="#{notifications.message}"/>                    
-                
             </c:otherwise>
         </c:choose>
         
+        <h:messages style="list-style: none; color: red"></h:messages>
+        <h:outputText id="sponsorshipMessage" value="#{notifications.message}"/>     
         
 
     </ui:define>
