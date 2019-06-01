@@ -19,11 +19,72 @@
     </ui:define>
 
     <ui:define name="content">
-        
+        <style>
+
+            .container {
+                display: inline;
+                position: relative;
+                padding-left: 35px;
+                margin-bottom: 12px;
+                cursor: pointer;
+                font-size: 22px;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            .container input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+            }
+
+            .checkmark {
+                position: absolute;
+                display: block;
+                float: left;
+                top: 0;
+                left: 0;
+                height: 25px;
+                width: 25px;
+                background-color: #eee;
+                border-radius: 50%;
+            }
+            
+            .container:hover input ~ .checkmark {
+                background-color: #ccc;
+            }
+
+            .container input:checked ~ .checkmark {
+                background-color: #2196F3;
+            }
+
+            .container input:checked ~ .checkmark:after {
+                display: block;
+            }
+
+        </style>
         <h3>
             #{locale_msg.sponsorship_application}
         </h3>
         <hr/>
+        <h3>Subscription fee</h3>
+       
+        <label class="container">
+          <input type="radio" name="subscriptionType" checked="checked">Monthly: 14.99$</input>
+          <span class="checkmark"></span>
+        </label>
+
+        <label class="container">
+          <input type="radio" name="subscriptionType">Annual: 149.99$</input>
+          <span class="checkmark"></span>
+        </label>
+        
+        <p></p>
+        
         <h:form class="card">
             <div class="card-body p-5">
 
