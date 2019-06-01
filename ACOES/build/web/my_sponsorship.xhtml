@@ -14,12 +14,11 @@
     <ui:param name="must_be_logged_in" value="true"></ui:param>
 
     <ui:define name="title">
-        ACOES - Sponsorship Information
+        ACOES - #{locale_msg.menu_sponsorship_info}
     </ui:define>
 
-    <ui:define name="content">
-        
-        <h3>Sponsorship information</h3>
+    <ui:define name="content">        
+        <h3>#{locale_msg.menu_sponsorship_info}</h3>
              <hr></hr>
              <div style="margin:20px 20px 25px 20px;" class="w3-border w3-padding w3-padding-32">
                  <c:if test="#{sessionControl.usersServices.isSponsor(sessionControl.user)}">
@@ -28,11 +27,11 @@
                              <table class="table table-hover">
                                  <thead>
                                      <tr>
-                                         <th>First name</th>
-                                         <th>Last name</th>
-                                         <th>Gender</th>
-                                         <th>City</th>
-                                         <th>Country</th>
+                                         <th>#{locale_msg.first_name}</th>
+                                         <th>#{locale_msg.last_name}</th>
+                                         <th>#{locale_msg.gender}</th>
+                                         <th>#{locale_msg.city}</th>
+                                         <th>#{locale_msg.country}</th>
                                      </tr>
                                  </thead>
                                  <tbody>
@@ -43,10 +42,10 @@
                                              <td>
                                                  <c:choose>
                                                      <c:when test="#{child.gender == 'MALE'}">
-                                                         Male
+                                                         #{locale_msg.male}
                                                      </c:when>
                                                      <c:otherwise>
-                                                         Female
+                                                         #{locale_msg.female}
                                                      </c:otherwise>
                                                  </c:choose>
                                              </td>
@@ -58,7 +57,7 @@
                              </table>  
                          </c:when>
                          <c:otherwise>
-                             You are not sponsoring any child.
+                             #{locale_msg.no_sponsored_children_msg}
                          </c:otherwise>
                      </c:choose>
                  </c:if>
