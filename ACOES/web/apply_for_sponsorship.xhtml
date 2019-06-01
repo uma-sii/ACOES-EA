@@ -75,10 +75,10 @@
                                         <label>
                                             <span class="hidden-xs">
                                                 <c:choose>
-                                                    <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                                    <c:when test="#{locale_msg.lang == 'en'}">
                                                         Expiration
                                                     </c:when>
-                                                    <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                                    <c:when test="#{locale_msg.lang == 'es'}">
                                                         Fecha de expiración
                                                     </c:when>
                                                 </c:choose>
@@ -93,10 +93,10 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <c:choose>
-                                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                            <c:when test="#{locale_msg.lang == 'en'}">
                                                 <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
                                             </c:when>
-                                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                            <c:when test="#{locale_msg.lang == 'es'}">
                                                 <label data-toggle="tooltip" title="" data-original-title="3 digitos en la parte de atrás de la tarjeta">CVV <i class="fa fa-question-circle"></i></label>
                                             </c:when>
                                         </c:choose>

@@ -55,24 +55,7 @@
                      background: #0b7dda;
                  }
             </style>
-        
-        <c:choose>
-            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                <c:set var="h_title" value="Sponsors"/>
-                <c:set var="no_sponsors_msg" value="There are no sponsors."/>
-                <c:set var="subscription_type" value="Subscription Type"/>
-                <c:set var="monthly" value="Monthly"/>
-                <c:set var="yearly" value="Yearly"/>
-            </c:when>
-            <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                <c:set var="h_title" value="Patrocinadores"/>
-                <c:set var="no_sponsors_msg" value="No se encontraron patrocinadores."/>
-                <c:set var="subscription_type" value="Tipo de subscripción"/>
-                <c:set var="monthly" value="Mensual"/>
-                <c:set var="yearly" value="Anual"/>
-            </c:when>
-        </c:choose>
-        
+
         <h3>#{locale_msg.menu_sponsors}</h3>
         <hr/>
         
@@ -88,11 +71,11 @@
                         <h:outputText value="#{entry.email}"/>
                     </h:column>
                     <h:column>
-                        <f:facet name="header">#{subscription_type}</f:facet>
+                        <f:facet name="header">#{locale_msg.subscription_type}</f:facet>
                         <c:set var="bool_monthly" value="#{entry.subscriptionType == 'MONTHLY'}"/>
                         <c:set var="bool_yearly" value="#{entry.subscriptionType == 'YEARLY'}"/>
-                        <h:outputText value="#{monthly}" rendered="#{bool_monthly}"/>
-                        <h:outputText value="#{yearly}" rendered="#{bool_yearly}"/>
+                        <h:outputText value="#{locale_msg.monthly}" rendered="#{bool_monthly}"/>
+                        <h:outputText value="#{locale_msg.yearly}" rendered="#{bool_yearly}"/>
                     </h:column>
                 </h:dataTable>
             </c:otherwise>

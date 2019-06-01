@@ -56,54 +56,31 @@
                  }
             </style>
             
-            <c:choose>
-                <c:when test="#{sessionControl.lang == 'ENGLISH'}">
-                    <c:set var="h_title" value="Dashboard"/>
-                    <c:set var="no_payments_msg" value="There are no payments."/>
-                    <c:set var="concept" value="Concept"/>
-                    <c:set var="income" value="Income ($/Quota)"/>
-                    <c:set var="payment_method" value="Payment Method"/>
-                    <c:set var="timestamp_col" value="Timestamp"/>
-                    <c:set var="total_amount" value="Total amount"/>
-                    <c:set var="num_benefactors" value="Number of benefactors"/>
-                </c:when>
-                <c:when test="#{sessionControl.lang == 'SPANISH'}">
-                    <c:set var="h_title" value="Dashboard"/>
-                    <c:set var="no_payments_msg" value="No se han encontrado pagos."/>
-                    <c:set var="concept" value="Concepto"/>
-                    <c:set var="income" value="Cuantía ($/Cuota)"/>
-                    <c:set var="payment_method" value="Método de pago"/>
-                    <c:set var="timestamp_col" value="Fecha"/>
-                    <c:set var="total_amount" value="Total"/>
-                    <c:set var="num_benefactors" value="Número de benefactores"/>
-                </c:when>
-            </c:choose>
-            
             <h3>Dashboard</h3>
             <hr/>
             <c:set var="paymentsStats" value="#{sessionControl.paymentsServices.getStats()}" scope="request" />
             
             <c:choose>
                 <c:when test="#{paymentsStats.getPayments().isEmpty()}">
-                    #{no_payments_msg}
+                    #{locale_msg.no_payments_msg}
                 </c:when>
                 <c:otherwise>
                     <h:dataTable id="table" value="#{paymentsStats.getPayments()}" var="entry">
                         <h:column>
-                            <f:facet name="header">#{concept}</f:facet>
+                            <f:facet name="header">#{locale_msg.concept}</f:facet>
                             <h:outputText value="#{entry.concept}"/>
                         </h:column>
                         <h:column>
-                            <f:facet name="header">#{income}</f:facet>
+                            <f:facet name="header">#{locale_msg.income}</f:facet>
                             <h:outputText value="#{entry.amount}"/>
                         </h:column>
                         <h:column>
-                            <f:facet name="header">#{payment_method}</f:facet>
+                            <f:facet name="header">#{locale_msg.payment_method}</f:facet>
                             <h:outputText value="#{entry.paymentMethod}"/>
                         </h:column>
 
                         <h:column>
-                            <f:facet name="header">#{timestamp_col}</f:facet>
+                            <f:facet name="header">#{locale_msg.timestamp}</f:facet>
                             <h:outputText value="#{entry.timestamp}"/>
                         </h:column>
                         <h:column>
@@ -112,8 +89,8 @@
                         </h:column>
                     </h:dataTable>
                 <p></p>
-                <b>#{total_amount}:</b> <h:outputText value=" $#{paymentsStats.totalAmount()}"></h:outputText><br/>
-                <b>#{num_benefactors}:</b> <h:outputText value=" #{paymentsStats.numberOfBenefactors()}"></h:outputText>
+                <b>#{locale_msg.total_amount}:</b> <h:outputText value=" $#{paymentsStats.totalAmount()}"></h:outputText><br/>
+                <b>#{locale_msg.num_benefactors}:</b> <h:outputText value=" #{paymentsStats.numberOfBenefactors()}"></h:outputText>
 
                 </c:otherwise>
             </c:choose>

@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -30,14 +31,14 @@ import org.acoes.entity.Sponsor;
 @SessionScoped
 public class SessionControl implements Serializable {
     
-    private String locale;
+    private Locale locale;
 
     private static Map<String,Object> countries;
     
     static {
        countries = new LinkedHashMap<>();
-       countries.put("English", Locale.ENGLISH);
        countries.put("Spanish", new Locale("es", "ES"));
+       countries.put("English", Locale.ENGLISH);
     }
     
     private RegisteredUser user;
@@ -54,10 +55,12 @@ public class SessionControl implements Serializable {
     @EJB
     private AdminsFacade adminsServices;
     
-    private Language lang;
     
-    public SessionControl(){
-        lang = Language.SPANISH;
+    public SessionControl(){}
+    
+    @PostConstruct
+    public void init() {
+        locale = FacesContext.getCurrentInstance().getExternalContext().getRequestLocale();
     }
     
     public void setUser(RegisteredUser user){
@@ -90,14 +93,6 @@ public class SessionControl implements Serializable {
     
     public AdminsFacade getAdminsServices(){
         return adminsServices;
-    }
-    
-    public synchronized void setLang(Language language){
-        this.lang = language;
-    }
-    
-    public synchronized Language getLang(){
-        return lang;
     }
     
     public void refreshUser(){
@@ -137,13 +132,18 @@ public class SessionControl implements Serializable {
       return countries;
    }
 
-   public String getLocale() {
+   public Locale getLocale(){
       return locale;
    }
 
-   public void setLocale(String locale) {
-      this.locale = locale;
-   }
+   public String getLanguage() {
+        return locale.getLanguage();
+    }
+
+    public void setLanguage(String language) {
+        locale = new Locale(language);
+        FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
+    }
 
    //value change event listener
    public void localeChanged(ValueChangeEvent e) {

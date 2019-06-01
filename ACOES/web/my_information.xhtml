@@ -50,11 +50,11 @@
                         #{locale_msg.last_name}: <h:inputText class="form-control" value="#{sessionControl.sponsor.lastName}"/><br/>
                         #{locale_msg.gender}: <h:selectOneMenu class="form-control" value="#{sessionControl.sponsor.gender}">
                                         <c:choose>
-                                            <c:when test="#{sessionControl.lang == 'ENGLISH'}">
+                                            <c:when test="#{locale_msg.lang == 'en'}">
                                                 <f:selectItem itemValue="MALE" itemLabel="Male" />
                                                 <f:selectItem itemValue="FEMALE" itemLabel="Female" />
                                             </c:when>
-                                            <c:when test="#{sessionControl.lang == 'SPANISH'}">
+                                            <c:when test="#{locale_msg.lang == 'es'}">
                                                 <f:selectItem itemValue="MALE" itemLabel="Hombre" />
                                                 <f:selectItem itemValue="FEMALE" itemLabel="Mujer" />
                                             </c:when>
