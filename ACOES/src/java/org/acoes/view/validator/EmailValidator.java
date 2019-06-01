@@ -28,14 +28,17 @@ public class EmailValidator implements Validator{
         
         if(usersService.doesUserExist(email)){
             createFacesMessage(context, "Error: User already exists", "Error: User already exists");
+            return;
         }
         
         if(email.length() == 0){
             createFacesMessage(context, "Error: Email is not valid", "Email cannot be empty.");
+            return;
         }
         
 	if(!email.matches(emailRegex)) {
             createFacesMessage(context, "Error: Email is not valid", "Error: Email is not valid.");
+            return;
         }
     }
     

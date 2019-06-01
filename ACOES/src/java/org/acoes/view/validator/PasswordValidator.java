@@ -16,7 +16,7 @@ public class PasswordValidator implements Validator{
 	String password = (String) value;
         if(password.length() < 5){
             createFacesMessage(context, "Error: your password needs to be at least 5 characters long",
-                                        "Error: your password needs to be at least 5 characters long");
+                                        "");
         }
     }
     
