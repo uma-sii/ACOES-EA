@@ -67,7 +67,6 @@
             }
 
         </style>
-        
         <h3>
             #{locale_msg.sponsorship_application}
         </h3>
@@ -85,6 +84,7 @@
         </label>
         
         <p></p>
+        
         <h:form class="card">
             <div class="card-body p-5">
 
@@ -187,7 +187,7 @@
                             </c:choose>
                         </p>
                         <p>
-                            <button type="button" class="btn btn-primary" onclick="window.open('https://www.paypal.com/us/webapps/mpp/home')"> <i class="fab fa-paypal"></i>
+                            <button type="button" class="btn btn-primary"> <i class="fab fa-paypal"></i>
                                 <c:choose>
                                     <c:when test="#{locale_msg.lang == 'en'}">
                                         Log in my PayPal
