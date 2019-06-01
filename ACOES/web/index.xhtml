@@ -57,11 +57,26 @@
             <h:panelGrid style="margin: 0 auto;" columns="2" cellpadding="5">
                 <c:choose>
                     <c:when test="#{locale_msg.lang == 'en'}">
-                        <h:button class="btn btn-primary" value="BECOME A SPONSOR" outcome="registration.xhtml"/>    
+                        <c:choose>
+                            <c:when test="#{sessionControl.loggedIn()}">
+                                <h:button class="btn btn-primary" value="BECOME A SPONSOR" outcome="apply_for_sponsorship.xhtml"/>  
+                            </c:when>
+                            <c:otherwise>
+                                <h:button class="btn btn-primary" value="BECOME A SPONSOR" outcome="registration.xhtml"/>  
+                            </c:otherwise>
+                        </c:choose>
+  
                         <h:button class="btn btn-secondary" value="MAKE A DONATION" outcome="donate.xhtml"/>
                     </c:when>
                     <c:when test="#{locale_msg.lang == 'es'}">
-                        <h:button class="btn btn-primary" value="SER PATROCINADOR" outcome="registration.xhtml"/>    
+                        <c:choose>
+                            <c:when test="#{sessionControl.loggedIn()}">
+                                <h:button class="btn btn-primary" value="SER PATROCINADOR" outcome="apply_for_sponsorship.xhtml"/>  
+                            </c:when>
+                            <c:otherwise>
+                                <h:button class="btn btn-primary" value="SER PATROCINADOR" outcome="registration.xhtml"/>  
+                            </c:otherwise>
+                        </c:choose>                        
                         <h:button class="btn btn-secondary" value="HACER DONACIÓN" outcome="donate.xhtml"/>
                     </c:when>
                 </c:choose>
