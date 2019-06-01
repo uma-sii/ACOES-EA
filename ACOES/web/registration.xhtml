@@ -30,8 +30,10 @@
                             <h:panelGrid columns="1" cellpadding="5" style="width:100%;">
                                 <fieldset>
                                     <legend>Account Information</legend>
-                                    <h:inputText   required="true" class="form-control" pt:placeholder="Your Email" value="#{register_Controller.email}" />
-                                    <h:inputSecret required="true" class="form-control" pt:placeholder="Password" id="nonFeedback" value="#{register_Controller.password}">
+                                    <h:inputText   required="true" class="form-control" pt:placeholder="Your Email" id="email" value="#{register_Controller.email}" >
+                                        <f:validator validatorId="EmailValidator" />
+                                    </h:inputText>
+                                    <h:inputSecret required="true" class="form-control" pt:placeholder="Password" id="password" value="#{register_Controller.password}" > 
                                         <f:validator validatorId="PasswordValidator" />
                                     </h:inputSecret>
                                     <h:inputSecret required="true" class="form-control" pt:placeholder="Repeat Password" value="#{register_Controller.repeatPassword}" />
@@ -70,8 +72,10 @@
                             <h:panelGrid columns="1" cellpadding="5" style="width:100%;">
                                 <fieldset>
                                     <legend>Información sobre la cuenta</legend>
-                                    <h:inputText   required="true" class="form-control" pt:placeholder="Email" value="#{register_Controller.email}" />
-                                    <h:inputSecret required="true" class="form-control" pt:placeholder="Contraseña" id="nonFeedback" value="#{register_Controller.password}">
+                                    <h:inputText   required="true" class="form-control" pt:placeholder="Correo electrónico" id="email" value="#{register_Controller.email}" >
+                                        <f:validator validatorId="EmailValidator" />
+                                    </h:inputText>
+                                    <h:inputSecret required="true" class="form-control" pt:placeholder="Contraseña" id="password" value="#{register_Controller.password}" > 
                                         <f:validator validatorId="PasswordValidator" />
                                     </h:inputSecret>
                                     <h:inputSecret required="true" class="form-control" pt:placeholder="Repite la contraseña" value="#{register_Controller.repeatPassword}" />
