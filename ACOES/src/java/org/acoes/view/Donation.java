@@ -2,6 +2,7 @@ package org.acoes.view;
 
 import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 /**
  * @author Manuel
@@ -11,6 +12,9 @@ import javax.inject.Named;
 public class Donation implements Serializable  {
     private int amount;
     private String message;
+    
+    @Inject
+    private SessionControl sessionControl;
     
     public Donation() {
         amount = 0;
@@ -34,7 +38,11 @@ public class Donation implements Serializable  {
     }
     
     public void donate(){
-        message = "Thanks for contributing to our cause";
+        if(sessionControl.getLanguage().equals("en")){
+            message = "Thanks for contributing to our cause";
+        } else{
+            message = "Gracias por contribuir a nuestra causa";
+        }
         amount = 0;
     }
 }

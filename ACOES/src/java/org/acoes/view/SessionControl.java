@@ -104,7 +104,6 @@ public class SessionControl implements Serializable {
     }
     
     public String redirectIfNeeded(){
-        System.out.println("Redirect if needed");
         if(!loggedIn())
             return "login.xhtml";
         return null;
@@ -114,10 +113,15 @@ public class SessionControl implements Serializable {
         FacesContext ctx = FacesContext.getCurrentInstance();
         
         if(user == null){
-            ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error, incorrect user or password", "Error, incorrect user or password"));
+            String message = null;
+            if(getLanguage().equals("en")){
+                message = "Error: incorrect user or password";
+            } else{
+                message = "Error: usuario o contraseña incorrecta";
+            }
+            ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, message, message));
             return "login.xhtml";
         }
-        
         return "index.xhtml";
     }
     

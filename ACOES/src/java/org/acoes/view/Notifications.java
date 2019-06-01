@@ -50,6 +50,10 @@ public class Notifications implements Serializable  {
             type = SubscriptionType.MONTHLY;
         Sponsor applicant = (Sponsor)sessionControl.getUser();
         sponsorshipsServices.applyForSponsorship(applicant, type);
-        message = "Thanks for contributing to our cause";
+        if(sessionControl.getLanguage().equals("en")){
+            message = "Thanks for contributing to our cause";
+        } else{
+            message = "Gracias por contribuir a nuestra causa";
+        }
     }
 }

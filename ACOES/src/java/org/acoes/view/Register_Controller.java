@@ -56,7 +56,12 @@ public class Register_Controller {
             FacesContext ctx = FacesContext.getCurrentInstance();
             FacesMessage message = new FacesMessage();
             message.setSeverity(FacesMessage.SEVERITY_ERROR);
-            message.setSummary("Passwords are not the same");
+            if(ctrl.getLanguage().equals("en")){
+                message.setSummary("Passwords are not the same");
+            } else{
+                message.setSummary("Las contraseñas no coinciden");
+            }
+            
             ctx.addMessage("signupForm:Password", message);
             return "registration.xhtml";
         }
