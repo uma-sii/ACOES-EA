@@ -18,6 +18,10 @@ public interface PaymentsFacade {
     
     public List<Payment> getUserPayments(Sponsor sponsor);
     
+    public void userDonation(Sponsor sponsor, int amount);
+    public void anonDonation(int amount);
+
+    
     public Stats getStats();
     
     public class Stats{

@@ -1,6 +1,7 @@
 
 package org.acoes.business.impl;
 
+import java.util.Date;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -38,5 +39,31 @@ public class PaymentsFacadeImpl implements PaymentsFacade {
         Query query = em.createQuery("SELECT p FROM Payment p WHERE p.benefactor.email = '" + sponsor.getEmail() + "'");
         List<Payment> payments = (List<Payment>)query.getResultList();
         return payments;
+    }
+
+    @Override
+    public void userDonation(Sponsor sponsor, int amount) {
+        
+        Date date = new Date();
+        
+        Payment p = new Payment(sponsor,amount,"Donation");
+        p.setTimestamp(date);
+        p.setPaymentMethod("Bank transference");
+        
+        em.persist(p);
+    }
+
+    @Override
+    public void anonDonation(int amount) {
+        
+        Date date = new Date();
+        
+        Payment p = new Payment();
+        p.setConcept("Donation");
+        p.setTimestamp(date);
+        p.setPaymentMethod("Bank transference");      
+        p.setAmount(amount);
+        
+        em.persist(p);
     }
 }
