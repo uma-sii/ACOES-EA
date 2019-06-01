@@ -71,22 +71,24 @@
             #{locale_msg.sponsorship_application}
         </h3>
         <hr/>
-        <h3>Subscription fee</h3>
-       
-        <label class="container">
-          <input type="radio" name="subscriptionType" checked="checked">Monthly: 14.99$</input>
-          <span class="checkmark"></span>
-        </label>
-
-        <label class="container">
-          <input type="radio" name="subscriptionType">Annual: 149.99$</input>
-          <span class="checkmark"></span>
-        </label>
-        
-        <p></p>
         
         <h:form class="card">
+            
             <div class="card-body p-5">
+                
+                <h4>#{locale_msg.subscription_fee}</h4>
+       
+                    <label class="container">
+                      <input type="radio" name="subscriptionType" checked="checked">#{locale_msg.monthly}: 14.99$</input>
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">
+                        <input type="radio" name="subscriptionType">#{locale_msg.yearly}: 149.99$</input>
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <p></p>
 
                 <ul class="nav bg-light nav-pills rounded nav-fill mb-3" role="tablist">
                         <li class="nav-item">

@@ -68,8 +68,8 @@
                 </li>
             </ul>
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                    <h:form>
-                        <h:selectOneMenu value="#{sessionControl.language}" onchange="submit()">
+                    <h:form style="margin-right: 10px">
+                        <h:selectOneMenu class="btn btn-light" value="#{sessionControl.language}" onchange="submit()">
                             <f:selectItem itemValue="en" itemLabel="English" />
                             <f:selectItem itemValue="es" itemLabel="Español" />
                         </h:selectOneMenu>
