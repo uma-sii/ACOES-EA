@@ -21,6 +21,7 @@ public interface PaymentsFacade {
     public void userDonation(Sponsor sponsor, int amount);
     public void anonDonation(int amount);
 
+    public void sponsorshipSubscription(Sponsor sponsor, int amount);
     
     public Stats getStats();
     

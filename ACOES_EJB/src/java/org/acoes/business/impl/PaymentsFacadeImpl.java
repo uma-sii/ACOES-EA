@@ -66,4 +66,18 @@ public class PaymentsFacadeImpl implements PaymentsFacade {
         
         em.persist(p);
     }
+
+    @Override
+    public void sponsorshipSubscription(Sponsor sponsor, int amount) {
+        
+        Date date = new Date();
+        
+        Payment p = new Payment(sponsor, amount, "Subscription");
+        p.setTimestamp(date);
+        p.setPaymentMethod("Bank transference");
+        
+        em.persist(p);        
+    }
+    
+    
 }

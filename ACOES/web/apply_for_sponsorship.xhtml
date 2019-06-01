@@ -67,150 +67,169 @@
             }
 
         </style>
-        <h3>
-            #{locale_msg.sponsorship_application}
-        </h3>
-        <hr/>
         
-        <h:form class="card">
+        <c:choose>
             
-            <div class="card-body p-5">
+            <c:when test="#{sessionControl.usersServices.isAdmin(sessionControl.user)}">
+                #{locale_msg['admins_dont_sponsor']}
+            </c:when>
+            
+            <c:when test="#{sessionControl.usersServices.isSponsor(sessionControl.user)}">
+                #{locale_msg['already_a_sponsor']}                
+            </c:when>
+            
+            <c:otherwise>
                 
-                <h4>#{locale_msg.subscription_fee}</h4>
-       
-                    <h:selectOneRadio value="#{notifications.subscriptionType}">
-                        <f:selectItem itemValue="Monthly" itemLabel="#{locale_msg.monthly}: 14.99$" />
-                        <f:selectItem itemValue="Yearly" itemLabel="#{locale_msg.yearly}: 149.99$" />
-                    </h:selectOneRadio>
-                
-                    <!--<label class="container">
-                        
-                      <input type="radio" name="subscriptionType" checked="checked">#{locale_msg.monthly}: 14.99$</input>
-                      <span class="checkmark"></span>
-                    </label>
+                <h3>
+                    #{locale_msg.sponsorship_application}
+                </h3>
+                <hr/>
 
-                    <label class="container">
-                        <input type="radio" name="subscriptionType">#{locale_msg.yearly}: 149.99$</input>
-                      <span class="checkmark"></span>
-                    </label>-->
+                <h:form class="card">
 
-                    <p></p>
+                    <div class="card-body p-5">
 
-                    <ul class="nav bg-light nav-pills rounded nav-fill mb-3" role="tablist">
-                        <li class="nav-item">
-                                <a class="nav-link active" data-toggle="pill" href="#nav-tab-card">
-                                    <i class="fa fa-credit-card"></i>
-                                    #{locale_msg.credit_card}
-                                </a>
-                        </li>
-                        <li class="nav-item">
-                                <a class="nav-link" data-toggle="pill" href="#nav-tab-paypal">
-                                    <i class="fab fa-paypal"></i>PayPal
-                                </a>
-                        </li>
-                    </ul>
+                        <h4>#{locale_msg.subscription_fee}</h4>
 
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="nav-tab-card">
-                            <p class="alert alert-success">
-                                #{locale_msg.please_fill_card_credentials}
-                            </p>
-                                <div class="form-group">
-                                    <label for="username">
-                                        #{locale_msg.card_full_name}
-                                    </label>
-                                    <input type="text" class="form-control" name="username" placeholder="" required=""></input>
-                                </div> 
+                            <h:selectOneRadio value="#{notifications.subscriptionType}">
+                                <f:selectItem itemValue="Monthly" itemLabel="#{locale_msg.monthly}: 14.99$" />
+                                <f:selectItem itemValue="Yearly" itemLabel="#{locale_msg.yearly}: 149.99$" />
+                            </h:selectOneRadio>
 
-                                <div class="form-group">
-                                    <label for="cardNumber">
-                                        #{locale_msg.card_number}
-                                    </label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="cardNumber" placeholder=""></input>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text text-muted">
-                                                <i class="fab fa-cc-visa"></i>   <i class="fab fa-cc-amex"></i>   
-                                                <i class="fab fa-cc-mastercard"></i> 
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div> 
+                            <!--<label class="container">
 
-                                <div class="row">
-                                    <div class="col-sm-8">
+                              <input type="radio" name="subscriptionType" checked="checked">#{locale_msg.monthly}: 14.99$</input>
+                              <span class="checkmark"></span>
+                            </label>
+
+                            <label class="container">
+                                <input type="radio" name="subscriptionType">#{locale_msg.yearly}: 149.99$</input>
+                              <span class="checkmark"></span>
+                            </label>-->
+
+                            <p></p>
+
+                            <ul class="nav bg-light nav-pills rounded nav-fill mb-3" role="tablist">
+                                <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="pill" href="#nav-tab-card">
+                                            <i class="fa fa-credit-card"></i>
+                                            #{locale_msg.credit_card}
+                                        </a>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" data-toggle="pill" href="#nav-tab-paypal">
+                                            <i class="fab fa-paypal"></i>PayPal
+                                        </a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="nav-tab-card">
+                                    <p class="alert alert-success">
+                                        #{locale_msg.please_fill_card_credentials}
+                                    </p>
                                         <div class="form-group">
-                                            <label>
-                                                <span class="hidden-xs">
-                                                    <c:choose>
-                                                        <c:when test="#{locale_msg.lang == 'en'}">
-                                                            Expiration
-                                                        </c:when>
-                                                        <c:when test="#{locale_msg.lang == 'es'}">
-                                                            Fecha de expiración
-                                                        </c:when>
-                                                    </c:choose>
-                                                </span>
+                                            <label for="username">
+                                                #{locale_msg.card_full_name}
+                                            </label>
+                                            <input type="text" class="form-control" name="username" placeholder="" required=""></input>
+                                        </div> 
+
+                                        <div class="form-group">
+                                            <label for="cardNumber">
+                                                #{locale_msg.card_number}
                                             </label>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" placeholder="MM" name=""></input>
-                                                <input type="number" class="form-control" placeholder="YY" name=""></input>
+                                                <input type="text" class="form-control" name="cardNumber" placeholder=""></input>
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text text-muted">
+                                                        <i class="fab fa-cc-visa"></i>   <i class="fab fa-cc-amex"></i>   
+                                                        <i class="fab fa-cc-mastercard"></i> 
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div> 
+
+                                        <div class="row">
+                                            <div class="col-sm-8">
+                                                <div class="form-group">
+                                                    <label>
+                                                        <span class="hidden-xs">
+                                                            <c:choose>
+                                                                <c:when test="#{locale_msg.lang == 'en'}">
+                                                                    Expiration
+                                                                </c:when>
+                                                                <c:when test="#{locale_msg.lang == 'es'}">
+                                                                    Fecha de expiración
+                                                                </c:when>
+                                                            </c:choose>
+                                                        </span>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <input type="number" class="form-control" placeholder="MM" name=""></input>
+                                                        <input type="number" class="form-control" placeholder="YY" name=""></input>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <c:choose>
+                                                        <c:when test="#{locale_msg.lang == 'en'}">
+                                                            <label data-toggle="tooltip" title="" data-original-title="3 digits code on the back side of the card">CVV <i class="fa fa-question-circle"></i></label>
+                                                        </c:when>
+                                                        <c:when test="#{locale_msg.lang == 'es'}">
+                                                            <label data-toggle="tooltip" title="" data-original-title="3 digitos en la parte de atrás de la tarjeta">CVV <i class="fa fa-question-circle"></i></label>
+                                                        </c:when>
+                                                    </c:choose>
+                                                    <input type="number" class="form-control" required=""></input>
+                                                </div> 
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
+                                    <h:commandButton type="submit" class="btn btn-primary" value="#{locale_msg.confirm}" action="#{notifications.applyForSponsorship()}"/>
+                                </div> 
+                                <div class="tab-pane fade" id="nav-tab-paypal">
+                                    <p>
+                                        <c:choose>
+                                            <c:when test="#{locale_msg.lang == 'en'}">
+                                                PayPal is easiest way to pay online
+                                            </c:when>
+                                            <c:when test="#{locale_msg.lang == 'es'}">
+                                                PayPal es la forma más sencilla de pagar online
+                                            </c:when>
+                                        </c:choose>
+                                    </p>
+                                    <p>
+                                        <button type="button" class="btn btn-primary"> <i class="fab fa-paypal"></i>
                                             <c:choose>
                                                 <c:when test="#{locale_msg.lang == 'en'}">
-                                                    <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
+                                                    Log in my PayPal
                                                 </c:when>
                                                 <c:when test="#{locale_msg.lang == 'es'}">
-                                                    <label data-toggle="tooltip" title="" data-original-title="3 digitos en la parte de atrás de la tarjeta">CVV <i class="fa fa-question-circle"></i></label>
+                                                    Iniciar sesión en PayPal
                                                 </c:when>
                                             </c:choose>
-                                            <input type="number" class="form-control" required=""></input>
-                                        </div> 
-                                    </div>
-                                </div>
-                            <h:commandButton type="submit" class="btn btn-primary" value="#{locale_msg.confirm}" action="#{notifications.applyForSponsorship()}"/>
-                        </div> 
-                        <div class="tab-pane fade" id="nav-tab-paypal">
-                            <p>
-                                <c:choose>
-                                    <c:when test="#{locale_msg.lang == 'en'}">
-                                        PayPal is easiest way to pay online
-                                    </c:when>
-                                    <c:when test="#{locale_msg.lang == 'es'}">
-                                        PayPal es la forma más sencilla de pagar online
-                                    </c:when>
-                                </c:choose>
-                            </p>
-                            <p>
-                                <button type="button" class="btn btn-primary"> <i class="fab fa-paypal"></i>
+                                        </button>
+                                    </p>
                                     <c:choose>
                                         <c:when test="#{locale_msg.lang == 'en'}">
-                                            Log in my PayPal
+                                            <p><strong>Note:</strong> You will be redirected to PayPal's domain. </p>
                                         </c:when>
                                         <c:when test="#{locale_msg.lang == 'es'}">
-                                            Iniciar sesión en PayPal
+                                            <p><strong>Nota:</strong> Será redirigido a la página de PayPal. </p>
                                         </c:when>
                                     </c:choose>
-                                </button>
-                            </p>
-                            <c:choose>
-                                <c:when test="#{locale_msg.lang == 'en'}">
-                                    <p><strong>Note:</strong> You will be redirected to PayPal's domain. </p>
-                                </c:when>
-                                <c:when test="#{locale_msg.lang == 'es'}">
-                                    <p><strong>Nota:</strong> Será redirigido a la página de PayPal. </p>
-                                </c:when>
-                            </c:choose>
-                        </div>
-                    </div> 
-                </div> 
-            </h:form> 
-        <p></p>
-        <h:messages style="list-style: none; color: red"></h:messages>
-        <h:outputText id="sponsorshipMessage" value="#{notifications.message}"/>
+                                </div>
+                            </div> 
+                        </div> 
+                    </h:form> 
+                <p></p>
+                <h:messages style="list-style: none; color: red"></h:messages>
+                <h:outputText id="sponsorshipMessage" value="#{notifications.message}"/>                    
+                
+            </c:otherwise>
+        </c:choose>
+        
+        
+
     </ui:define>
 </ui:composition>
