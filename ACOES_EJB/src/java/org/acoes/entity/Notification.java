@@ -34,6 +34,14 @@ public class Notification implements Serializable {
     
     private SubscriptionType subscriptionType;
     
+    public Notification(){}
+    
+    public Notification(Sponsor applicant, Date dateOfRequest, SubscriptionType subscriptionType) {
+        this.applicant = applicant;
+        this.dateOfRequest = dateOfRequest;
+        this.subscriptionType = subscriptionType;
+    }
+    
     public Long getId() {
         return id;
     }

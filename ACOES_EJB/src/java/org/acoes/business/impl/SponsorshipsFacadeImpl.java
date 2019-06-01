@@ -1,18 +1,21 @@
 package org.acoes.business.impl;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 import org.acoes.business.SponsorshipsFacade;
-import org.acoes.entity.Payment;
+import org.acoes.entity.Notification;
 import org.acoes.entity.SponsoredChild;
 import org.acoes.entity.RegisteredUser;
 import org.acoes.entity.Sponsor;
+import org.acoes.entity.SubscriptionType;
 
 /**
  * @author Manuel
@@ -30,8 +33,16 @@ public class SponsorshipsFacadeImpl implements SponsorshipsFacade {
     }
 
     @Override
-    public void applyForSponsorship(RegisteredUser user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void applyForSponsorship(Sponsor user, SubscriptionType type) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	Date date = new Date();
+        
+        Notification n = new Notification(user, date, type);
+        
+        em.persist(n);
+        
+        user.setSubscriptionType(type);
+        em.merge(user);
     }
 
     @Override

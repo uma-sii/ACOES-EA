@@ -92,7 +92,12 @@
                                     </c:when>
                                     <c:otherwise>
                                         <a class="dropdown-item" href="my_sponsorship.xhtml">#{locale_msg['menu_sponsorships']}</a>
-                                         <a class="dropdown-item" href="apply_for_sponsorship.xhtml">#{locale_msg['menu_apply_for_sponsorship']}</a>
+                                        <c:choose>
+                                            <c:when test="#{sessionControl.sponsor.subscriptionType == null}">
+                                                <a class="dropdown-item" href="apply_for_sponsorship.xhtml">#{locale_msg['menu_apply_for_sponsorship']}</a>
+                                            </c:when>
+                                            <c:otherwise></c:otherwise>
+                                        </c:choose>
                                         <a class="dropdown-item" href="payments.xhtml">#{locale_msg['menu_payments']}</a>
                                     </c:otherwise>
                                 </c:choose>

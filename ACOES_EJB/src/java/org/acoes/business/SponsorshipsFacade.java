@@ -6,6 +6,7 @@ import javax.ejb.Local;
 import org.acoes.entity.SponsoredChild;
 import org.acoes.entity.RegisteredUser;
 import org.acoes.entity.Sponsor;
+import org.acoes.entity.SubscriptionType;
 
 /**
  * Business tier operations related to sponsorships.
@@ -15,5 +16,5 @@ import org.acoes.entity.Sponsor;
 public interface SponsorshipsFacade {
     public List<Sponsor> getSponsors(boolean onlyApproved);
     public Collection<SponsoredChild> getSponsoredChildren(RegisteredUser user, int page);
-    public void applyForSponsorship(RegisteredUser user);
+    public void applyForSponsorship(Sponsor user, SubscriptionType type);
 }
