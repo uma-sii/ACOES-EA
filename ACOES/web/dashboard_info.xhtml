@@ -81,7 +81,7 @@
 
                         <h:column>
                             <f:facet name="header">#{locale_msg.timestamp}</f:facet>
-                            <h:outputText value="#{entry.timestamp}"/>
+                            <h:outputText value="#{sessionControl.dateToString(entry.timestamp)}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">Benefactor</f:facet>

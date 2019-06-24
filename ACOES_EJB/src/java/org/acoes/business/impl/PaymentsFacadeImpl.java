@@ -43,7 +43,6 @@ public class PaymentsFacadeImpl implements PaymentsFacade {
 
     @Override
     public void userDonation(Sponsor sponsor, int amount) {
-        
         Date date = new Date();
         
         Payment p = new Payment(sponsor,amount,"Donation");
@@ -55,7 +54,6 @@ public class PaymentsFacadeImpl implements PaymentsFacade {
 
     @Override
     public void anonDonation(int amount) {
-        
         Date date = new Date();
         
         Payment p = new Payment();
@@ -69,7 +67,6 @@ public class PaymentsFacadeImpl implements PaymentsFacade {
 
     @Override
     public void sponsorshipSubscription(Sponsor sponsor, int amount) {
-        
         Date date = new Date();
         
         Payment p = new Payment(sponsor, amount, "Subscription");
