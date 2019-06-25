@@ -29,17 +29,19 @@
                     <h:panelGrid columns="1" cellpadding="5" style="width:100%;">
                         <c:choose>
                             <c:when test="#{locale_msg.lang == 'en'}">
+                                <h:commandButton class="btn btn-primary" style="width: 100%" value="I forgot my password" action="forgotpassword.xhtml"/>
                                 <fieldset>
-                                    <h:inputText   required="true" class="form-control" pt:placeholder="Email" value="#{login_Controller.email}" />
-                                    <h:inputSecret required="true" class="form-control" pt:placeholder="Password" id="nonFeedback" value="#{login_Controller.password}" />
+                                    <h:inputText   required="false" class="form-control" pt:placeholder="Email" value="#{login_Controller.email}" />
+                                    <h:inputSecret required="false" class="form-control" pt:placeholder="Password" id="nonFeedback" value="#{login_Controller.password}" />
                                 </fieldset>
                                 <h:commandButton class="btn btn-primary" style="width: 100%" value="Log in" action="#{login_Controller.authenticate()}"/>
                                 <h:commandButton class="btn btn-primary" style="width: 100%" value="Create an account" action="registration.xhtml"/>    
                             </c:when>
                             <c:when test="#{locale_msg.lang == 'es'}">
+                                <h:commandButton class="btn btn-primary" style="width: 100%" value="Olvidé mi contraseña" action="forgotpassword.xhtml"/>
                                 <fieldset>
-                                    <h:inputText   required="true" class="form-control" pt:placeholder="Email" value="#{login_Controller.email}" />
-                                    <h:inputSecret required="true" class="form-control" pt:placeholder="Contraseña" id="nonFeedback" value="#{login_Controller.password}" />
+                                    <h:inputText   required="false" class="form-control" pt:placeholder="Email" value="#{login_Controller.email}" />
+                                    <h:inputSecret required="false" class="form-control" pt:placeholder="Contraseña" id="nonFeedback" value="#{login_Controller.password}" />
                                 </fieldset>
                                 <h:commandButton class="btn btn-primary" style="width: 100%" value="Iniciar sesión" action="#{login_Controller.authenticate()}"/>
                                 <h:commandButton class="btn btn-primary" style="width: 100%" value="Crear una cuenta" action="registration.xhtml"/>    
