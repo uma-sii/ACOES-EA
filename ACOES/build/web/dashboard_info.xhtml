@@ -4,7 +4,8 @@
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui">
     
     <ui:param name="must_be_logged_in" value="true"></ui:param>
     <ui:param name="admin_only" value="true"></ui:param>
@@ -60,6 +61,14 @@
             <hr/>
             <c:set var="paymentsStats" value="#{sessionControl.paymentsServices.getStats()}" scope="request" />
             
+            <c:set var="incomeMonYear_0" value="#{paymentsStats.incomeLastSixMonths(0)}" scope="request" />
+            <c:set var="incomeMonYear_1" value="#{paymentsStats.incomeLastSixMonths(1)}" scope="request" />
+            <c:set var="incomeMonYear_2" value="#{paymentsStats.incomeLastSixMonths(2)}" scope="request" />
+            <c:set var="incomeMonYear_3" value="#{paymentsStats.incomeLastSixMonths(3)}" scope="request" />
+            <c:set var="incomeMonYear_4" value="#{paymentsStats.incomeLastSixMonths(4)}" scope="request" />
+            <c:set var="incomeMonYear_5" value="#{paymentsStats.incomeLastSixMonths(5)}" scope="request" />
+            <c:set var="incomeMonYear_6" value="#{paymentsStats.incomeLastSixMonths(6)}" scope="request" />
+            
             <c:choose>
                 <c:when test="#{paymentsStats.getPayments().isEmpty()}">
                     #{locale_msg.no_payments_msg}
@@ -81,7 +90,7 @@
 
                         <h:column>
                             <f:facet name="header">#{locale_msg.timestamp}</f:facet>
-                            <h:outputText value="#{entry.timestamp}"/>
+                            <h:outputText value="#{sessionControl.dateToString(entry.timestamp)}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">Benefactor</f:facet>
@@ -90,9 +99,102 @@
                     </h:dataTable>
                 <p></p>
                 <b>#{locale_msg.total_amount}:</b> <h:outputText value=" $#{paymentsStats.totalAmount()}"></h:outputText><br/>
+                <b>#{locale_msg.average_income}:</b> <h:outputText value=" $#{paymentsStats.averageIncome()}"></h:outputText><br/>
+                <b>#{locale_msg.average_donation}:</b> <h:outputText value=" $#{paymentsStats.averageDonation()}"></h:outputText><br/>
+                <b>#{locale_msg.average_subscription}:</b> <h:outputText value=" $#{paymentsStats.averageSubscription()}"></h:outputText><br/>
                 <b>#{locale_msg.num_benefactors}:</b> <h:outputText value=" #{paymentsStats.numberOfBenefactors()}"></h:outputText>
 
                 </c:otherwise>
             </c:choose>
+            
+            <p></p>
+            
+            <h:panelGrid style="width: 100%" columns="2" cellspacing="1">
+                <p:column>
+                    <div id="piechart" style="width: 650px; height: 361px;"></div>
+                </p:column>
+                <p:column>
+                    <div id="piechart2" style="width: 650px; height: 361px;"></div>
+                </p:column>
+            </h:panelGrid>
+            
+            <div id="chart_div" style="height: 360px"></div>
+            
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+              google.charts.load('current', {'packages':['corechart', 'line']});
+              google.charts.setOnLoadCallback(drawChart);
+
+              function drawChart() {
+                  drawPieChart1();
+                  drawPieChart2();
+                  drawLineChart();
+              }
+              
+              function drawPieChart1(){
+                var data = google.visualization.arrayToDataTable([
+                  ['#{locale_msg.type}', '#{locale_msg.count}'],
+                  ['#{locale_msg.donation}',      #{paymentsStats.numDonations()}],
+                  ['#{locale_msg.subscription}',  #{paymentsStats.numSubscriptions()}]
+                ]);
+
+                var options = {
+                  title: '#{locale_msg.income_source}',
+                  is3D: true,
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                chart.draw(data, options);
+              }
+              
+              function drawPieChart2(){
+                var data = google.visualization.arrayToDataTable([
+                  ['#{locale_msg.type}', '#{locale_msg.amount}'],
+                  ['#{locale_msg.donation}',      #{paymentsStats.totalDonations()}],
+                  ['#{locale_msg.subscription}',  #{paymentsStats.totalSubscriptions()}]
+                ]);
+
+                var options = {
+                  title: '#{locale_msg.income_breakdown}',
+                  is3D: true
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+
+                chart.draw(data, options);
+              }
+              
+              function drawLineChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'X');
+                data.addColumn('number', '#{locale_msg.income}');
+                                
+                var rows = [
+                    ["#{incomeMonYear_0.x()}", #{incomeMonYear_0.y()}],
+                    ["#{incomeMonYear_1.x()}", #{incomeMonYear_1.y()}],
+                    ["#{incomeMonYear_2.x()}", #{incomeMonYear_2.y()}],
+                    ["#{incomeMonYear_3.x()}", #{incomeMonYear_3.y()}],
+                    ["#{incomeMonYear_4.x()}", #{incomeMonYear_4.y()}],
+                    ["#{incomeMonYear_5.x()}", #{incomeMonYear_5.y()}]
+                ];
+
+                data.addRows(rows);
+
+                var options = {
+                  hAxis: {
+                    title: '#{locale_msg.month}/#{locale_msg.year}'
+                  },
+                  vAxis: {
+                    title: '#{locale_msg.income}',
+                    format: '# $'
+                  }
+                };
+
+                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+                chart.draw(data, options);
+              }
+            </script>
     </ui:define>
 </ui:composition>

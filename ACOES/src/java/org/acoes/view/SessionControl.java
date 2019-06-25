@@ -9,6 +9,9 @@ import org.acoes.entity.RegisteredUser;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -134,13 +137,13 @@ public class SessionControl implements Serializable {
 
     public Map<String, Object> getCountries() {
       return countries;
-   }
+    }
 
-   public Locale getLocale(){
-      return locale;
-   }
+    public Locale getLocale(){
+       return locale;
+    }
 
-   public String getLanguage() {
+    public String getLanguage() {
         return locale.getLanguage();
     }
 
@@ -148,15 +151,27 @@ public class SessionControl implements Serializable {
         locale = new Locale(language);
         FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
     }
+    
+    public String dateToString(Date date){
+        String pattern;
+        DateFormat df;
+        if(locale.getLanguage().equals(Locale.ENGLISH.getLanguage())){
+            pattern = "MM/dd/yyyy HH:mm";
+        } else{
+            pattern = "dd/MM/yyyy HH:mm";
+        }
+        df = new SimpleDateFormat(pattern);
+        return df.format(date);
+    }
 
-   //value change event listener
-   public void localeChanged(ValueChangeEvent e) {
-      String newLocaleValue = e.getNewValue().toString();
-      for (Map.Entry<String, Object> entry : countries.entrySet()) {
-         if(entry.getValue().toString().equals(newLocaleValue)) {
-            FacesContext.getCurrentInstance()
-               .getViewRoot().setLocale((Locale)entry.getValue());         
-         }
-      }
-   }
+    //value change event listener
+    public void localeChanged(ValueChangeEvent e) {
+       String newLocaleValue = e.getNewValue().toString();
+       for (Map.Entry<String, Object> entry : countries.entrySet()) {
+          if(entry.getValue().toString().equals(newLocaleValue)) {
+             FacesContext.getCurrentInstance()
+                .getViewRoot().setLocale((Locale)entry.getValue());         
+          }
+       }
+    }
 }
