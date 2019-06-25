@@ -75,6 +75,4 @@ public class PaymentsFacadeImpl implements PaymentsFacade {
         
         em.persist(p);        
     }
-    
-    
 }
