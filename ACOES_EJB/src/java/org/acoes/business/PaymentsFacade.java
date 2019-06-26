@@ -84,9 +84,16 @@ public interface PaymentsFacade {
                     totalSubscriptions += p.getAmount();
                 }
             }
-            averageIncome = totalAmount/payments.size();
-            averageDonation = totalDonations/nDonations;
-            averageSubscription = totalSubscriptions/nSubscriptions;
+            if(payments.size() > 0 && nDonations > 0 && nSubscriptions > 0){
+                averageIncome = totalAmount/payments.size();
+                averageDonation = totalDonations/nDonations;
+                averageSubscription = totalSubscriptions/nSubscriptions;
+            } else {
+                averageIncome = 0;
+                averageDonation = 0;
+                averageSubscription = 0;
+            }
+
             
             incomeLastSixMonths();
         }

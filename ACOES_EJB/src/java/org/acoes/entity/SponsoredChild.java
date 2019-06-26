@@ -22,7 +22,8 @@ public class SponsoredChild implements Serializable {
     private String lastName;
     
     private Gender gender;
-    
+    private String photo;
+
     private String address;
     private String city;
     private String country;
@@ -58,6 +59,14 @@ public class SponsoredChild implements Serializable {
         this.firstName = firstName;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+        
     public String getLastName() {
         return lastName;
     }
