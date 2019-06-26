@@ -27,6 +27,7 @@
                              <table class="table table-hover">
                                  <thead>
                                      <tr>
+                                         <th>#{locale_msg.child_photo}</th>
                                          <th>#{locale_msg.first_name}</th>
                                          <th>#{locale_msg.last_name}</th>
                                          <th>#{locale_msg.gender}</th>
@@ -37,6 +38,7 @@
                                  <tbody>
                                      <c:forEach var="child" items="#{sessionControl.sponsorshipsServices.getSponsoredChildren(sessionControl.user, 0)}">
                                          <tr>
+                                             <td><a href="#{child.photo}"> <img src="#{child.photo}" height="60pt" width="40pt"></img> </a></td>
                                              <td><h:outputText value="#{child.firstName}"/></td>
                                              <td><h:outputText value="#{child.lastName}"/></td>
                                              <td>

@@ -84,16 +84,10 @@ public interface PaymentsFacade {
                     totalSubscriptions += p.getAmount();
                 }
             }
-            if(payments.size() > 0 && nDonations > 0 && nSubscriptions > 0){
-                averageIncome = totalAmount/payments.size();
-                averageDonation = totalDonations/nDonations;
-                averageSubscription = totalSubscriptions/nSubscriptions;
-            } else {
-                averageIncome = 0;
-                averageDonation = 0;
-                averageSubscription = 0;
-            }
-
+            
+            averageIncome = payments.isEmpty() ? 0 : totalAmount/payments.size();
+            averageDonation = nDonations == 0 ? 0 : totalDonations/nDonations;
+            averageSubscription = nSubscriptions == 0 ? 0 : totalSubscriptions/nSubscriptions;
             
             incomeLastSixMonths();
         }
