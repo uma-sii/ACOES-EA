@@ -35,7 +35,7 @@ public class EmailSender {
         sendEmail(ACOES_EMAIL, subject, body);
     }
     
-    private void sendEmail(String to_email, String subject, String body){
+    public void sendEmail(String to_email, String subject, String body){
         Properties prop = new Properties();
         prop.put("mail.smtp.host", SMTP_HOST_NAME);
         prop.put("mail.smtp.starttls.enable", "true");
